@@ -26,8 +26,19 @@
                         style="visibility: hidden;color: darkorange;" id="btn_theme"></i>
                 </div>
 
-                <div class="col-1 text-end pe-2"><i class="fa-solid fa-bars rounded-circle p-1 fs-6"></i></div>
+                <div class="col-1 text-end pe-2" ><i class="fa-solid fa-bars rounded-circle p-1 fs-6" id="menu"></i></div>
+
+                
+
             </div>
+            <!--| composant menu|-->
+            <span class="shadow bg-N1 p-2" style="visibility: hidden; position: absolute; border-radius: 20px 0px 20px 20px;right: 3%;" id="composant_menu">
+                <p>Nos services</p>
+                <p>Signaler un problème </p>
+                <p>Compte</p>
+                <p>Développeur</p>
+                <p>A propos des nous</p>
+            </span>
 
         </div><br><br><br>
 
@@ -65,7 +76,7 @@
 
                 <div class="col-12 col-sm-6 mb-2 col-md-4">
                     <div class=" zone zone_services bg-N1 p-4">
-                        <a href="#">
+                        <a href="./src/page/design-graphisme.html">
                             <div class="h3">Design graphique et création de logo, invitation, batch, flyer</div>
                             <img style="border-radius: 20px;" src="./img/site/logodesing.jpeg" height="200" width="90%"
                                 alt="" srcset="">
@@ -92,7 +103,7 @@
 
                 <div class="col-12 col-sm-6 mb-2 col-md-4">
                     <div class=" zone zone_services bg-N1 p-4">
-                        <a href="#">
+                        <a href="./src/page/webapp.html">
                             <div class="h3">Création des site et application web professionnels</div>
                             <img style="border-radius: 20px;" src="./img/site/logowebapp.png" height="200" width="90%"
                                 alt="" srcset="">
@@ -119,6 +130,7 @@
 
             <!--| il nous ons fait confiance|-->
             <div class="row gx-1">
+                <div class="h3 fw-bold">Ils nous font confiance</div>
                 <div class="col" id="scrole_articles">
                     <table class="">
                         <tbody style="padding: 0px;">
@@ -127,82 +139,52 @@
                                     <a href="#">
                                         <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
                                             <img style="border-radius: 20px;"
-                                                src="./img/site/images (7).png" height="250"
-                                                width="220" alt="" srcset="">
+                                                src="./img/site/images (7).png" height="150"
+                                                width="150" alt="" srcset="">
                                         </div>
                                     </a>
                                 </th>
-
+        
                                 <th>
                                     <a href="#">
                                         <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
                                             <img style="border-radius: 20px;"
-                                                src="./img/site/images (4).png" height="250"
-                                                width="220" alt="" srcset="">
+                                                src="./img/site/logoX-commerce.jpg" height="150"
+                                                width="150" alt="" srcset="">
                                         </div>
                                     </a>
                                 </th>
-
+        
                                 <th>
                                     <a href="#">
                                         <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
                                             <img style="border-radius: 20px;"
-                                                src="./img/site/marketing.png" height="250"
-                                                width="220" alt="" srcset="">
+                                                src="./img/site/marketing.png" height="150"
+                                                width="150" alt="" srcset="">
                                         </div>
                                     </a>
                                 </th>
-
+        
                                 <th>
                                     <a href="#">
                                         <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
                                             <img style="border-radius: 20px;"
-                                                src="./img/site/logowebapp.png" height="250"
-                                                width="220" alt="" srcset="">
+                                                src="./img/site/logoEducTechnologie.png" height="150"
+                                                width="150" alt="" srcset="">
                                         </div>
                                     </a>
                                 </th>
-
+        
                                 <th>
                                     <a href="#">
                                         <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
                                             <img style="border-radius: 20px;"
-                                                src="./img/site/logofacebook.png" height="250"
-                                                width="220" alt="" srcset="">
+                                                src="./img/site/logo-webtv.png" height="150"
+                                                width="150" alt="" srcset="">
                                         </div>
                                     </a>
                                 </th>
-
-                                <th>
-                                    <a href="#">
-                                        <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
-                                            <img style="border-radius: 20px;"
-                                                src="./img/site/logowhatsap.png" height="250"
-                                                width="220" alt="" srcset="">
-                                        </div>
-                                    </a>
-                                </th>
-
-                                <th>
-                                    <a href="#">
-                                        <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
-                                            <img style="border-radius: 20px;"
-                                                src="./img/site/logoEducTechnologie.png" height="250"
-                                                width="220" alt="" srcset="">
-                                        </div>
-                                    </a>
-                                </th>
-
-                                <th>
-                                    <a href="#">
-                                        <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
-                                            <img style="border-radius: 20px;"
-                                                src="./img/site/logodesing.jpeg" height="250"
-                                                width="220" alt="" srcset="">
-                                        </div>
-                                    </a>
-                                </th>
-
+        
                             </tr>
                         </tbody>
                     </table>
@@ -214,6 +196,10 @@
                 <div class="col">from educ technologie</div>
             </div>
         </div>
+        <script src="./js/bibliotheques/jquery_3.6.3.js"></script>
+        <script src="./js/bibliotheques/xmodal/xmodal1.0.0.js"></script>
+        <script src="./js/main.js"></script>
+        <script src="./js/index.js"></script>
 </body>
 
 </html>
