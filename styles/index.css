@@ -1,0 +1,34 @@
+/*  Class utilitaire */
+
+.bg-N1 {
+    background-color: whitesmoke;
+}
+
+.bg-N2 {
+    background-color: white;
+}
+
+.champ {
+    border-radius: 20px;
+    border: 0px solid white;
+}
+
+#scrole_articles {
+    overflow-y: scroll;
+    scrollbar-color: red;
+    scrollbar-width: thin;
+
+}
+.root{
+    background-image: linear-gradient(500deg,transparent,rgb(94, 212, 233));
+}
+.foote{
+    background-image: linear-gradient(500deg,transparent,rgb(2, 2, 2));
+}
+.zone{
+    border-radius: 20px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
