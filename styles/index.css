@@ -23,7 +23,8 @@
     background-image: linear-gradient(500deg,transparent,rgb(94, 212, 233));
 }
 .foote{
-    background-image: linear-gradient(500deg,transparent,rgb(2, 2, 2));
+    background-color: black;
+    color: white;
 }
 .zone{
     border-radius: 20px;
@@ -34,4 +35,8 @@ a{
 }
 .p{
     font-size: 20px;
+}
+.icon{
+    font-size: 50px;
+    color:rgb(16, 113, 151) ;
 }
