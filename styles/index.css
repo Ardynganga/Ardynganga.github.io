@@ -8,6 +8,10 @@
     background-color: white;
 }
 
+.round{
+    border-radius: 20px;
+}
+
 .champ {
     border-radius: 20px;
     border: 0px solid white;
