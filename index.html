@@ -1,357 +1,684 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/bibliotheques/bootstrap-5.0.2-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./icons/fontawesome-free-6.2.1-web/css/all.css">
-    <link rel="stylesheet" href="./styles/index.css">
-    <title>Accueil</title>
-</head>
+  <head>
 
-<body class="bg-N1">
-    <div class="container-fuid px-1 root">
-        <!-- entête||-->
-        <div class="entete fixed-top">
-            <div class="row gx-1  pt-1 pe-1 ps-1 ">
-                <div class="col logo"><img style="border-radius: 50%;" src="./img/site/logoEducTechnologie.png" alt=""
-                        srcset="" id="logo_url" width="40" height="40"><span class="text-info"><b> Educ
-                            Technologie</b></span>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="assets/images/icon-500x500.png">
+    <link href="assets/css/css2.css" rel="stylesheet">
+
+    <title>An-dev | Home</title>
+
+    <!-- Bootstrap core CSS and js-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-574-mexant.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+<!--
+
+TemplateMo 574 Mexant
+
+https://templatemo.com/tm-574-mexant
+
+-->
+  </head>
+
+<body>
+
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <!-- ***** Logo Start ***** -->
+                      <a href="index.html" class="logo">
+                          <img src="assets/images/logo.png" alt="">
+                      </a>
+                      <!-- ***** Logo End ***** -->
+                      <!-- ***** Menu Start ***** -->
+                      <ul class="nav">
+                          <li class="scroll-to-section"><a href="#top" class="active">Foyer</a></li>
+                          <li class="scroll-to-section"><a href="#services">Services</a></li>
+                          <li class="scroll-to-section"><a href="#about">A propos</a></li>
+                          <li class="has-sub">
+                              <a href="javascript:void(0)">Pages</a>
+                              <ul class="sub-menu">
+                                  <li><a href="about-us.html">A propos de An-Dev</a></li>
+                                  <li><a href="our-services.html">Nos Services</a></li>
+                                  <li><a href="contact-us.html">Contacter Nous</a></li>
+                              </ul>
+                          </li>
+                          <li class="scroll-to-section"><a href="#testimonials">Temoignages</a></li>
+                          <li><a href="contact-us.html">Commencer avec An-Dev</a></li> 
+                      </ul>        
+                      <a class='menu-trigger'>
+                          <span>Menu</span>
+                      </a>
+                      <!-- ***** Menu End ***** -->
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Main Banner Area Start ***** -->
+  <div class="swiper-container" id="top">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="slide-inner" style="background-image:url(assets/images/slide-01.jpg)">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="header-text">
+                  <h2>Salut Moi c'est <em>Ardy Nganga</em> Un développeur <br><em>passionné</em></h2>
+                  <div class="div-dec"></div>
+                  <p>spécialisé dans la création de solutions web et mobiles innovantes. Fort d'une solide expertise en développement de logiciels, je m'engage à transformer vos idées en applications fonctionnelles, performantes et intuitives.</p>
+                  <div class="buttons">
+                    <div class="green-button">
+                      <a href="about-us.html">En savoir plus</a>
+                    </div>
+                    <div class="orange-button">
+                      <a href="contact-us.html">Nous contacter</a>
+                    </div>
+                  </div>
                 </div>
-
-                <div class="col-1" id="btn_theme"><i class=" btn-theme-claire fa-solid fa-moon rounded-circle fs-6"
-                        id="btn_theme"></i><i
-                        class=" btn-theme-sombre fa-solid fa-star-and-crescent rounded-circle fs-6 "
-                        style="visibility: hidden;color: darkorange;" id="btn_theme"></i>
-                </div>
-
-                <div class="col-1 text-end pe-2"><i class="fa-solid fa-bars rounded-circle p-1 fs-6" id="menu"></i>
-                </div>
-
-
-
+              </div>
             </div>
-            <!--| composant menu|-->
-            <span class="shadow bg-N1 p-2"
-                style="visibility: hidden; position: absolute; border-radius: 20px 0px 20px 20px;right: 3%;"
-                id="composant_menu">
-                <p>Nos services</p>
-                <p>Documentation</p>
-                <p>Signaler un problème </p>
-                <p>Compte</p>
-                <p>Développeur</p>
-                <p>A propos des nous</p>
-            </span>
-
-        </div><br><br><br>
-
-        <!--| accueil|-->
-        <div class="row gx-1">
-            <div class="col-12 col-sm-6">
-                <div class="h2 fw-bold">Agence web offrant des solutions numérique les mieux adapter à vos besoins , Nous travaillons
-                    intelligemment pour vous
-                    satisfaire.
-                </div>
-                <div class="text-center"><span class="btn btn-info round shadow fw-bold text-white">Recevoir le devis</span></div><br>
-                <div class="">Nous avons des expert dont vous avez besoin pour réaliser vos projets.
-
-                    Quelle que soit la mission que vous souhaitez confier, les professionnels qu’il vous faut se trouve
-                    sur Educ Technologie ! Tous les métiers du web et de l’IT sont présents sur la plateforme et bien
-                    plus encore.
-                </div>
-                
-            </div>
-
-
-
-            <div class="col-12 col-sm-6 ">
-                <div class="zone zone_services bg-N1 p-2 shadow">
-                    <p class="h4 fw-bold">Nos principaux métiers</p>
-
-                    <ul>
-                        <li>Création des site et application web professionnels</li>
-                        <li>Création des applications mobile cross plateforme et native</li>
-                        <li>Réalisation de campagne de communication et de Marketing digital</li>
-                        <li>Design graphique et création</li>
-                    </ul>
-
-                    <p class="h4 fw-bold">Nous contacter maintenant sur</p>
-                    <div class="row gx-1 root text-center p-1" style="border-radius: 20px;">
-                        <div class="col"><i class="fa-solid fa-phone  fs-4"></i>+243 907867868</div>
-                        <div class="col"><a href="https://wa.me/243907867868"><img style="border-radius: 50%;"
-                                    src="./img/site/logowhatsap.png" alt="" srcset="" id="logo_url" width="40"
-                                    height="40"></a></div>
-                        <div class="col"><a href="https://www.facebook.com/profile.php?id=61551144329128"><img
-                                    style="border-radius: 50%;" src="./img/site/logofacebook.png" alt="" srcset=""
-                                    id="logo_url" width="40" height="40"></a></div>
-                    </div>
-                </div>
-            </div><br><br><br>
-
-            <!--|Pourquoi choisir éduc technologi |-->
-            <div class="h4 pt-5">Pourquoi choisir éduc technologie ?</div>
-            <div class="row gx-1">
-                <!--|Simple|-->
-                <div class="col-11 offset-1 offset-md-1 col-md-3">
-                    <div class="row gx-1">
-                        <div class="col-3 col-sm-3"><i class="fa-solid fa-hands  icon "></i></div>
-                        <div class="col-9">
-                            <p class="fw-bold">Simple</p>
-                            <p>Décrivez votre projet en quelques mots avec nos cahiers de charge en ligne</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!--|Rapide|-->
-                <div class="col-11 offset-1 offset-md-0 col-md-3">
-                    <div class="row gx-1">
-                        <div class="col-3 col-sm-3"><i class="fa-solid fa-gauge  icon"></i></div>
-                        <div class="col-9">
-                            <p class="fw-bold">Rapide</p>
-                            <p>Recevez le de devis en quelques minutes</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!--|catalogues des modèle |-->
-                <div class="col-11 offset-1 offset-md-0 col-md-3">
-                    <div class="row gx-1">
-                        <div class="col-3 col-sm-3"><i class="fa-solid fa-table-list  icon"></i></div>
-                        <div class="col-9">
-                            <p class="fw-bold">Catalogues des modèle </p>
-                            <p>Des dizaines des catalogues avec les modèles des projet</i></p>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <span class="col-10 col-sm-4 mb-2 col-md-3 ps-3 p-1 fw-bold"
-                style="border-radius: 20px;background-image: linear-gradient(500deg,rgb(94, 212, 233),rgb(233, 209, 101));">
-                En savoir plus <i class="text-end fa-solid fa-up-right-from-square"></i></span>
-
-            <!--| presentation des services|-->
-            <div class="row gx-1 p-2">
-                <h3 class="pt-5">De quoi avez-vous besoin ?</h3>
-
-                <!--| infographie|-->
-                <div class="col-12 col-sm-6 mb-2 offset-md-1 col-md-5">
-                    <div class=" zone zone_services bg-N1 p-4 shadow">
-                        <a href="./src/page/design-graphisme.html">
-                            <div class="h3">Design graphique et création de logo, invitation, batch, flyer</div>
-                            <img style="border-radius: 20px;" src="./img/site/logodesing.jpeg" height="200" width="90%"
-                                alt="" srcset="">
-                            <div>Pour vos besoins en graphisme, en design graphique, en conception et création. Pour une
-                                image forte et des concepts graphique qui parlent par eux-mêmes.
-                            </div>
-
-                            <div class="row gx-1 p-2">
-                                <div class="col div zone root p-2">Explorer maintenant</div>
-                                
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
-
-                <!--| mobile app|-->
-                <div class="col-12 col-sm-6 mb-2 col-md-5">
-                    <div class=" zone zone_services bg-N1 p-4 shadow">
-                        <a href="./src/page/mobileapp.html">
-                            <div class="h3">Création des applications mobile cross plateforme et native</div>
-                            <img style="border-radius: 20px;" src="./img/site/logoweb.jpeg" height="200" width="90%"
-                                alt="" srcset="">
-                            <div>Augmenter la croissances de votre organisation avec une service de création des
-                                application mobile professionnel en RDC.
-                            </div>
-                            <div class="row gx-1 p-2">
-                                <div class="col div zone root p-2">Explorer maintenant</div>
-                                
-                            </div>
-
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 mb-2 offset-md-1 col-md-5">
-                    <div class=" zone zone_services bg-N1 p-4 shadow">
-                        <a href="./src/page/webapp.html">
-                            <div class="h3">Création des site et application web professionnels</div>
-                            <img style="border-radius: 20px;" src="./img/site/logowebapp.png" height="200" width="90%"
-                                alt="" srcset="">
-                            <div>Référenciez votre entreprise ou organisation avec un site ou application web, pour
-                                augmenter la confiance des vos partenaires.
-                            </div>
-
-                            <div class="row gx-1 p-2">
-                                <div class="col div zone root p-2">Explorer maintenant</div>
-                                
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 mb-2 col-md-5">
-                    <div class=" zone zone_services bg-N1 p-4">
-                        <a href="#">
-                            <div class="h3">Réalisation de campagne de communication et de Marketing digital</div>
-                            <img style="border-radius: 20px;" src="./img/site/marketing.png" height="200" width="90%"
-                                alt="" srcset="">
-                            <div>Avec notre service de communication et de marketing digital, les entreprise peuvent s’adresser à une audience internationale.
-                            </div>
-
-                            <div class="row gx-1 p-2">
-                                <div class="col div zone root p-2">Explorer maintenant</div>
-                                
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!--| il nous ons fait confiance|-->
-            <div class="row gx-1">
-                <div class="h3 fw-bold">Ils nous font confiance</div>
-                <div class="col" id="scrole_articles">
-                    <table class="">
-                        <tbody style="padding: 0px;">
-                            <tr>
-                                <th>
-                                    <a href="#">
-                                        <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
-                                            <img style="border-radius: 20px;" src="./img/site/selembao_bomoko.png"
-                                                height="150" width="150" alt="" srcset="">
-                                        </div>
-                                    </a>
-                                </th>
-
-                                <th>
-                                    <a href="#">
-                                        <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
-                                            <img style="border-radius: 20px;" src="./img/site/LK_print.png"
-                                                height="150" width="150" alt="" srcset="">
-                                        </div>
-                                    </a>
-                                </th>
-
-                                <th>
-                                    <a href="#">
-                                        <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
-                                            <img style="border-radius: 20px;" src="./img/site/eglise_mcjc.jpg"
-                                                height="150" width="150" alt="" srcset="">
-                                        </div>
-                                    </a>
-                                </th>
-
-                                <th>
-                                    <a href="#">
-                                        <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
-                                            <img style="border-radius: 20px;" src="./img/site/logoEducTechnologie.png"
-                                                height="150" width="150" alt="" srcset="">
-                                        </div>
-                                    </a>
-                                </th>
-
-                                <th>
-                                    <a href="#">
-                                        <div class="bg-N1 shadow" style="border-radius: 20px;margin-right: 3px;">
-                                            <img style="border-radius: 20px;" src="./img/site/logo-webtv.png"
-                                                height="150" width="150" alt="" srcset="">
-                                        </div>
-                                    </a>
-                                </th>
-
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            
-            <div class="p2 rounded">
-                <div class="row gx-1 bg-N1">
-                    <p class="h4 text-start pt-3">Les avantages de confier votre projet a Educ Technolgie</p>
-                    <div class="col-12 col-sm-6 mb-2 col-md-4 text-center"><img style="border-radius: 50%;"
-                            src="./img/site/icon-time.webp" alt="" srcset="" id="logo_url" width="50" height="50">
-                        <p class="fw-bold">Rapidité</p>
-                        <p class="">Que ce soit pour une mission courte ou pour des missions sur le long terme, nous fournissons
-                            nos effort pour respecter vos délais.</p>
-                    </div>
-
-                    <div class="col-12 col-sm-6 mb-2 col-md-4 text-center"><img style="border-radius: 50%;"
-                            src="./img/site/icon-tarifs.webp" alt="" srcset="" id="logo_url" width="50" height="50">
-                        <p class="fw-bold">Tarifs attractifs</p>
-                        <p>Lorsque vous confiez un projet à une agence ou à une entreprise, cette dernière a des frais
-                            fixes qui se répercutent sur la facture. Notre plateforme propose généralement ses services
-                            à un tarif plus attractif qu'une entreprise traditionnelle.
-                        </p>
-                    </div>
-
-                    <div class="col-12 col-sm-6 mb-2 col-md-4 text-center"><img style="border-radius: 50%;"
-                            src="./img/site/icon-flexibilite.webp" alt="" srcset="" id="logo_url" width="50"
-                            height="50">
-                        <p class="fw-bold">Flexibilité</p>
-                        <p>Éduc technologie est généralement une agence plus adaptable qu'une grande entreprise qui
-                            dispose de process longs et complexes. Vous pouvez plus facilement procéder à des
-                            ajustements dans les missions que vous lui attribuez.</p>
-                    </div>
-
-                    <div class="col-12 col-sm-6 mb-2 col-md-4 text-center"><img style="border-radius: 50%;"
-                            src="./img/site/icon-expertise.webp" alt="" srcset="" id="" width="50" height="50">
-                        <p class="fw-bold">Expertise</p>
-                        <p>Quand vous faites appel à un éduc technologie, vous faites réaliser votre projet à un
-                            spécialiste dans un domaine très précis. C'est d'autant plus vrai dans le secteur
-                            informatique, où il existe de nombreux langages de programmation et des technologies
-                            variées.
-                        </p>
-                    </div>
-
-                    <div class="col-12 col-sm-6 mb-2 col-md-4 text-center"><img style="border-radius: 50%;"
-                            src="./img/site/icon-vision.webp" alt="" srcset="" id="logo_url" width="50" height="50">
-                        <p class="fw-bold">Vision extérieure</p>
-                        <p class="">Nous apportons un regard neuf sur votre votre projet. Le choix vous revient de nous demander
-                            de réaliser une mission en tant qu’exécutant ou en tant que spécialiste capable d’apporter
-                            des idées innovantes pour votre entreprise.</p>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!--| pied de page|-->
-            <div class="row gx-1 foote p-3">
-
-                <div class="col">
-
-                    <p class="col fw-bold">Liens utiles</p>
-                    <p>Aide et FAQ</p>
-                    <p>Nos tarifs</p>
-                    <p>Conditions d'utilisation</p>
-                    <p>Politique de confidentialité</p>
-                    <p>Mentions légales</p>
-
-                </div>
-
-                <div class="col"></div>
-
-                <p class="h4 fw-bold">Nous Suivre sur</p>
-                <div class="row gx-1 root text-center p-1" style="border-radius: 20px;">
-                    <div class="col"><a href="https://wa.me/243907867868"><img style="border-radius: 50%;"
-                                src="./img/site/logowhatsap.png" alt="" srcset="" id="logo_url" width="40"
-                                height="40"></a></div>
-                    <div class="col"><a href="https://www.facebook.com/profile.php?id=61551144329128"><img
-                                style="border-radius: 50%;" src="./img/site/logofacebook.png" alt="" srcset=""
-                                id="logo_url" width="40" height="40"></a></div>
-                </div>
-            </div>
+          </div>
         </div>
-        <script src="./js/bibliotheques/jquery_3.6.3.js"></script>
-        <script src="./js/bibliotheques/xmodal/xmodal1.0.0.js"></script>
-        <script src="./js/main.js"></script>
-        <script src="./js/index.js"></script>
-</body>
+      </div>
+      <div class="swiper-slide">
+        <div class="slide-inner" style="background-image:url(assets/images/slide-02.jpg)">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="header-text">
+                  <h2><em>Marketing Digital</em> Accélérez votre croissance en ligne<br>avec <em>Nous</em></h2>
+                  <div class="div-dec"></div>
+                  <p>Nous vous aide à maximiser votre visibilité et à atteindre vos objectifs grâce à des stratégies de marketing digital ciblées et efficaces.</p>
+                  <div class="buttons">
+                    <div class="green-button">
+                      <a href="about-us.html">En savoir plus</a>
+                    </div>
+                    <div class="orange-button">
+                      <a href="contact-us.html">Nous contacter</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="slide-inner" style="background-image:url(assets/images/slide-03.jpg)">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="header-text">
+                  <h2>Conception <br> <em>Graphique</em> avec Nous</h2>
+                  <div class="div-dec"></div>
+                  <p>Une image vaut mille mots, surtout dans le monde digital. Je crée des identités visuelles uniques et mémorables. </p>
+                  <div class="buttons">
+                    <div class="green-button">
+                      <a href="about-us.html">En savoir plus</a>
+                    </div>
+                    <div class="orange-button">
+                      <a href="contact-us.html">Nous contacter</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+  </div>
 
+  <!-- ***** Services ***** -->
+
+  <section class="services" id="services">
+    <div class="container">
+
+      <div class="">
+        <h3>Services de Développement et Création Digitale par Ardy Nganga Dev</h3><br>
+        <p>En tant que Ardy Nganga Dev, je suis votre partenaire pour transformer vos idées en solutions digitales concrètes et performantes. Que vous cherchiez à créer une présence en ligne percutante, à lancer une application innovante ou à propulser votre marque, je mets mon expertise à votre disposition.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fas fa-globe"></i>
+            <h4>Développement Web</h4>
+            <p>Dans le monde connecté d'aujourd'hui, votre site web est bien plus qu'une simple présence en ligne</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fas fa-mobile-screen-button"></i>
+            <h4>Développement Mobile</h4>
+            <p>L'ère du mobile est là, et avoir une application est devenu un atout majeur. </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fas fa-desktop"></i>
+            <h4>Développement Desktop</h4>
+            <p>Lorsque la puissance et l'efficacité sont primordiales, les applications desktop sont la réponse. </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fas fa-palette"></i>
+            <h4>Conception Graphique</h4>
+            <p>Une image vaut mille mots, surtout dans le monde digital. Je crée des identités visuelles uniques et mémorables. </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fas fa-bullhorn"></i>
+            <h4>Marketing Digital</h4>
+            <p>Je vous aide à maximiser votre visibilité et à atteindre vos objectifs grâce à des stratégies de marketing digital ciblées</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fas fa-question"></i>
+            <h4>Ne vous posez plus des question</h4>
+            <p>Il suffi de nous contacter pour trouver la solution.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="simple-cta">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <h4>Faite-nous <em>Confiance</em> des maintenant pour <strong>Construire</strong> quelque chose ensemble</h4>
+        </div>
+        <div class="col-lg-7">
+          <div class="buttons">
+            <div class="green-button">
+              <a href="about-us.html">En Savoir plus</a>
+            </div>
+            <div class="orange-button">
+              <a href="contact-us.html">Nous contacter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-us" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading">
+            <h6>À propos de nous</h6>
+            <h4>Connaissez-nous mieux</h4>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="naccs">
+            <div class="tabs">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="menu">
+                    <div class="active gradient-border mb-2"><span>Conception Web</span></div>
+                    <div class="gradient-border mb-2"><span>Graphiques</span></div>
+                    <div class="gradient-border mb-2"><span>Marketing digital</span></div>
+                    <div class="gradient-border mb-2"><span>Développement mobile</span></div>
+                    <div class="gradient-border mb-2"><span>Développement Desktop</span></div>
+                    
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <ul class="nacc">
+
+                    <!--| Grille Conception Web|-->
+                    <li class="active">
+                      <div>
+                        <div class="main-list">
+                          <span class="title">Type du projet</span>
+                          <span class="title">Budget</span>
+                          <span class="title">Délai</span>
+                          <span class="title">Description</span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Site web statique</span>
+                          <span class="item">$50,00 à $500,00</span>
+                          <span class="item">48 heures</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal('Description Site web statique','Un site web statique est comme une brochure digitale. Son contenu est fixe et ne change pas souvent. Parfait pour présenter des informations qui restent les mêmes, comme des portfolios, des CV ou de pitits sites vitrine. Simple et rapide à construire, il est trés perfomant.')"></i></span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Site web dynamique</span>
+                          <span class="item">$80,00 à $3,000</span>
+                          <span class="item">72 heures</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick='openModal("Description Site web dynamique","Un site web dynamique est interactif et son contenu évolue. il est connecté à une base de données, permettant aux utilisateurs de s inscrire, de laisser des commentaires, ou de voir des informations personnalisées. Idéal pour les blogs, les sites-ecommerce ou les réseaux sociaux.")'></i></span></span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Web service</span>
+                          <span class="item">$80,00 à $3,000</span>
+                          <span class="item">7 jours</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal('Application web progressive','Les Web Services sont des systèmes qui permettent à différentes applications de communiquer entre elles sur internet. Ils ne sont pas visibles par l utilisateur final mais sont essentiels pour échanger des données et des fonctionnalités. Ils sont le moteur invisible derrière de nombreuses interactions en ligne.')"></i></span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Application web</span>
+                          <span class="item">$100,00 à $5,000</span>
+                          <span class="item">7 jours</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal('Description Application web','Une application web est un logiciel accessible via un navigateur internet. Elle offre des fonctionnalités complexes et interactives, similaires à celles d un logiciel installé sur votre ordinateur. Pensez aux outils de gestion de projet, aux applications de retouche photo en ligne ou aux systèmes de gestion de contenu.')"></i></span>
+                        </div>
+                        <div class="list-item last-item">
+                          <span class="item item-title">API</span>
+                          <span class="item">$100,00 to $5,999</span>
+                          <span class="item">7 jours</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal('Description API (Application Programming Interface)','Une API est un ensemble de règles et d outils qui permettent à des applications de se parler. C est comme un menu de restaurant : il liste ce que vous pouvez commander et comment le faire. Les API sont utilisées pour intégrer des fonctionnalités de services tiers, comme les paiements en ligne, les cartes géographiques ou les flux de réseaux sociaux, dans votre propre application.')"></i></span>
+                        </div>
+                        <div class="list-item last-item">
+                          <span class="item item-title">Application web progressive</span>
+                          <span class="item">$150,00 to $5,999</span>
+                          <span class="item">7 jours</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal('Applications Web Progressives (PWA)','Les Applications Web Progressives (PWA) sont une approche innovante qui combine le meilleur des applications mobiles et des sites web. Elles offrent une expérience utilisateur fluide et rapide, accessible directement depuis un navigateur, sans nécessiter de téléchargement depuis une boutique d applications.')"></i></span>
+                        </div>
+                      </div>
+                    </li>
+
+                    <!--| Grille Graphiques|-->
+                    <li>
+                      <div>
+                        <div class="main-list">
+                          <span class="title">Type du projet</span>
+                          <span class="title">Budget</span>
+                          <span class="title">Délai</span>
+                          <span class="title">Description</span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Conception de logos et d'identités visuelles (Branding)</span>
+                          <span class="item">$10,00 au delant</span>
+                          <span class="item">24 heurs</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal('Description Branding',`La conception de logos et d'identités visuelles est l'un des piliers du travail de graphiste. Il s'agit de créer l'image de marque d'une entreprise, d'un produit ou d'un service.`)"></i></span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Infographie et illustration</span>
+                          <span class="item">$5,00 au delant</span>
+                          <span class="item">24 heurs</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Infographie et illustration`,`L'infographie et l'illustration permettent de communiquer des informations complexes de manière visuelle et impactante.`)"></i></span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Design publicitaire et marketing</span>
+                          <span class="item">$15,200 au delant</span>
+                          <span class="item">24 heurs</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Design publicitaire et marketing`,`Le design publicitaire et marketing est axé sur la création de supports visuels pour les campagnes de communication.`)"></i></span>
+                        </div>
+                        <div class="list-item last-item">
+                          <span class="item item-title">Motion design et animation graphique</span>
+                          <span class="item">$20,00 au delant</span>
+                          <span class="item">24 heurs</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Motion design et animation graphique`,`Le motion design et l'animation graphique consistent à créer des graphiques en mouvement.`)"></i></span>
+                        </div>
+                    </li>
+
+                    <!--| Grille Marketing digital|-->
+                    <li>
+                      <div>
+                        <div class="main-list">
+                          <span class="title">Type du projet</span>
+                          <span class="title">Budget</span>
+                          <span class="title">Délai</span>
+                          <span class="title">Description</span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Publicité en Ligne (SEA / Search Engine Advertising)</span>
+                          <span class="item">A partir de $10</span>
+                          <span class="item">Par audience</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Publicité en Ligne (SEA / Search Engine Advertising)`,`Le SEA (Search Engine Advertising) ou publicité payante regroupe toutes les campagnes publicitaires diffusées sur internet, notamment via Google Ads (pour les moteurs de recherche) et les régies publicitaires des réseaux sociaux (Meta Ads, LinkedIn Ads, TikTok Ads, etc.).`)"></i></span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Optimisation pour les Moteurs de Recherche (SEO)</span>
+                          <span class="item">A partir de $10, gratuit pour nos client</span>
+                          <span class="item">48 heures</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Optimisation pour les Moteurs de Recherche (SEO)`,`Le SEO (Search Engine Optimization) consiste à améliorer le positionnement de votre site web dans les résultats de recherche organiques de Google, Bing, etc.Ce travail inclut l'optimisation technique du site (vitesse, mobile-friendly), l'optimisation du contenu (mots-clés, qualité, pertinence) et la construction de liens de qualité (netlinking). Le SEO est un investissement à long terme qui vise à générer du trafic qualifié de manière durable.`)"></i></span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Marketing des Réseaux Sociaux (Social Media Marketing)</span>
+                          <span class="item">A partir de $10</span>
+                          <span class="item">24 h</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Marketing des Réseaux Sociaux (Social Media Marketing)`,`Le marketing des réseaux sociaux vise à construire une présence et une communauté sur des plateformes comme Facebook, Instagram, LinkedIn, X (Twitter), TikTok, etc., pour interagir avec les clients et promouvoir produits/services. Cela inclut la création de contenu (textes, images, vidéos), la gestion de la communauté, la diffusion de publicités ciblées (voir Publicité en Ligne), l'analyse des performances et la collaboration.`)"></i></span>
+                        </div>
+                        <div class="list-item last-item">
+                          <span class="item item-title">Marketing par Email (Email Marketing)</span>
+                          <span class="item">A partir de $10</span>
+                          <span class="item">24 heures</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Marketing par Email (Email Marketing)`,`Le marketing par email consiste à envoyer des emails à une liste d'abonnés pour les informer, les engager et les convertir en clients.`)"></i></span>
+                        </div>
+                      </div>
+                    </li>
+
+                    <!--| Grille Développement mobile|-->
+                    <li>
+                      <div>
+                        <div class="main-list">
+                          <span class="title">Type du projet</span>
+                          <span class="title">Budget</span>
+                          <span class="title">Délai</span>
+                          <span class="title">Description</span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Applications natives</span>
+                          <span class="item">$250,00 au delant</span>
+                          <span class="item">Max 7 jours</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Applications natives`,`Les applications natives sont développées spécifiquement pour un système d'exploitation mobile (iOS pour Apple, Android pour Google) en utilisant les langages de programmation et les outils recommandés par le fabricant (par exemple, Swift/Objective-C pour iOS, Kotlin/Java pour Android).`)"></i></span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Applications hybrides</span>
+                          <span class="item">$500,00 au delant</span>
+                          <span class="item">Max 14 jours</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Applications hybrides`,`Les applications hybrides sont développées avec des technologies web (HTML, CSS, JavaScript) et sont ensuite encapsulées dans un conteneur natif qui leur permet de fonctionner sur différentes plateformes. Des frameworks comme React Native, Flutter ou Ionic sont couramment utilisés.`)"></i></span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Applications sur mesure (spécifiques à un besoin)</span>
+                          <span class="item">$1500,00 au delant</span>
+                          <span class="item">Max 14 jours</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Applications sur mesure (spécifiques à un besoin)`,`Ces applications ne sont pas un type technique en soi, mais plutôt une catégorie basée sur la finalité du projet, pouvant être réalisée avec l'une des technologies mentionnées ci-dessus.`)"></i></span>
+                        </div>
+                      </div>
+                    </li>
+
+                    <!--| Grille Développement Desktop|-->
+                    <li>
+                      <div>
+                        <div class="main-list">
+                          <span class="title">Project Title</span>
+                          <span class="title">Budget</span>
+                          <span class="title">Estimated</span>
+                          <span class="title">Technology</span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Applications utilitaires et de productivité simples</span>
+                          <span class="item">$1,000 to $2,000</span>
+                          <span class="item">Max 7 jours</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Applications utilitaires et de productivité simples`,`Ces applications sont conçues pour des tâches spécifiques et ne nécessitent pas une grande complexité en termes de base de données ou d'intégration. Elles peuvent inclure des calculatrices avancées, des convertisseurs d'unités, des applications de prise de notes basiques, des gestionnaires de tâches simples, des outils de conversion de fichiers, etc.`)"></i></span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Applications métier et de gestion de données (LOB - Line of Business)</span>
+                          <span class="item">$1,500 to $3,000</span>
+                          <span class="item">Max 14 jours</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Applications métier et de gestion de données (LOB - Line of Business)`,`Ces applications sont utilisées pour gérer des opérations spécifiques à une entreprise, comme la gestion de clients (CRM), la gestion des stocks, la facturation, la gestion de projets internes, etc. Elles impliquent souvent des bases de données locales ou en réseau, des rapports, et des processus métier complexes.`)"></i></span>
+                        </div>
+                        <div class="list-item">
+                          <span class="item item-title">Applications de création et d'édition (graphisme, audio, vidéo)</span>
+                          <span class="item">$3,000 to $6,000</span>
+                          <span class="item">Max 14 jours</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Applications de création et d'édition (graphisme, audio, vidéo)`,`Cette catégorie regroupe les logiciels de manipulation de médias, comme les éditeurs d'images (type Photoshop light), les logiciels de montage vidéo simples, les outils de production musicale, les applications de conception 3D basiques, etc. Elles sont gourmandes en ressources système et nécessitent des algorithmes complexes.`)"></i></span>
+                        </div>
+                        <div class="list-item last-item">
+                          <span class="item item-title">Autres types de projets</span>
+                          <span class="item">?</span>
+                          <span class="item">?</span>
+                          <span class="item"><i class="btn btn-primary fas fa-exclamation-circle" onclick="openModal(`Autres types de projets`,`Nous sommes ouverts à la collaboration sur d'autres types de projets également. La liste cu-dessus n'est qu'un aperçu non exhaustif des catégories de projets que nous réalisons fréquemment. N'hésitez pas à nous contacter pour discuter de votre besoin spécifique !`)"></i></span>
+                        </div>
+                      </div>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="right-content">
+            <h4>Salut ! Moi c'est Ardy Nganga</h4>
+            <p>Un développeur passionné spécialisé dans la création de solutions web et mobiles innovantes. Fort d'une solide expertise en développement de logiciels, je m'engage à transformer vos idées en applications fonctionnelles, performantes et intuitives.<br><br>Mon parcours m'a permis de maîtriser l'art de concevoir des expériences utilisateur fluides, que ce soit pour des sites web dynamiques ou des applications mobiles robustes. Je suis constamment à l'affût des dernières technologies et des meilleures pratiques pour garantir que chaque projet que j'entreprends soit à la pointe de l'innovation.<p>
+            <div class="green-button">
+              <a href="about-us.html">En Savoir plus</a>
+              <a href="https:wa.me//243840445627"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="calculator">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="left-image">
+            <img src="assets/images/calculator-image.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="section-heading">
+            <h4>Newsletter</h4>
+            <h6>Ne manquez rien de nos informations ! Abonnez-vous à notre newletter.</h6>
+          </div>
+          <form id="calculate" action="" method="get">
+            <div class="row">
+              <div class="col-lg-6">
+                <fieldset>
+                  <label for="name">Votre nom</label>
+                  <input type="name" name="name" id="name" placeholder="" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                  <label for="email">Votre adresse électronique</label>
+                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="" required="">
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="chooseOption" class="form-label">Sur quoi pouvons-nous vous informer ?</label>
+                  <select name="Category" class="form-select" aria-label="Default select example" id="chooseOption" onchange="this.form.click()">
+                      <option selected>Choisir une option</option>
+                      <option type="checkbox" name="option1" value="Online Banking">Activités de nos services</option>
+                      <option value="Financial Control">Notre Blog</option>
+                      <option value="Yearly Profit">Informé de la tendance technologique</option>
+                  </select>
+              </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="orange-button">S'abonnez</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading">
+            <h6>Testimonials</h6>
+            <h4>What They Say</h4>
+          </div>
+        </div>
+        <div class="col-lg-10 offset-lg-1">
+          <div class="owl-testimonials owl-carousel" style="position: relative; z-index: 5;">
+            <div class="item">
+              <i class="fa fa-quote-left"></i>
+              <p>“Nous avons confié la refonte complète de notre site vitrine à Ardy Nganga Dev, et le résultat a dépassé nos attentes. Design moderne, navigation fluide, et surtout un excellent référencement SEO. Très professionnel et à l'écoute de nos besoins.”</p>
+              <h4>Mireille K.</h4>
+              <span>Gérante de PME</span>
+              <div class="right-image">
+                <img src="assets/images/testimonials-01.jpg" alt="">
+              </div>
+            </div>
+            <div class="item">
+              <i class="fa fa-quote-left"></i>
+              <p>“Ardy a développé pour nous une application mobile intuitive et rapide pour la gestion de nos livraisons. Les délais ont été respectés et le suivi technique est irréprochable. Je recommande vivement ses services à toute entreprise sérieuse.”</p>
+              <h4>Pascal M.</h4>
+              <span>Responsable logistique</span>
+              <div class="right-image">
+                <img src="assets/images/testimonials-01.jpg" alt="">
+              </div>
+            </div>
+            <div class="item">
+              <i class="fa fa-quote-left"></i>
+              <p>“Grâce à la qualité des visuels créés par Ardy et sa stratégie marketing digitale, notre marque a gagné en visibilité sur les réseaux sociaux. Son travail est soigné, créatif et orienté résultats. Un partenaire de confiance !”</p>
+              <h4>Sandrine T.</h4>
+              <span> Fondatrice de startup</span>
+              <div class="right-image">
+                <img src="assets/images/testimonials-01.jpg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners">
+    <div class="container text-center">
+      <center>
+        <div class="h2 text-white">Ils mons fait confiance</div>
+        <div class="row">
+          <div class="col-lg-2 col-sm-4 col-6">
+            <div class="item">
+              <img src="assets/images/logo-oxy-tech.png" height="100" class="bg-white rounded pt-1 pb-1" alt="">
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6">
+            <div class="item">
+              <img src="assets/images/logodgrma.png" height="100" class="bg-white rounded pt-1 pb-1"  alt="">
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6">
+            <div class="item">
+              <img src="assets/images/logo-tshopo.png" height="100" class="bg-white rounded pt-1 pb-1" alt="">
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6">
+            <div class="item">
+              <img src="assets/images/_logo_EUP_SANTE.png" height="100" class="bg-white rounded pt-1 pb-1" alt="">
+            </div>
+          </div>
+          
+        </div>
+      </center>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2022 An-Dev., Inc. Tous droits réservés.  
+          
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Bootstrap -->
+  <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content bg-blanc">
+              <div class="modal-header">
+                  <h5 class="modal-title titre-alert" id="alertModalLabel"></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <div id="body-alert"></div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="btn_partage_parrain" style="display: none;">Partager</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/swiper.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+        var interleaveOffset = 0.5;
+
+      var swiperOptions = {
+        loop: true,
+        speed: 1000,
+        grabCursor: true,
+        watchSlidesProgress: true,
+        mousewheelControl: true,
+        keyboardControl: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        on: {
+          progress: function() {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+              var slideProgress = swiper.slides[i].progress;
+              var innerOffset = swiper.width * interleaveOffset;
+              var innerTranslate = slideProgress * innerOffset;
+              swiper.slides[i].querySelector(".slide-inner").style.transform =
+                "translate3d(" + innerTranslate + "px, 0, 0)";
+            }      
+          },
+          touchStart: function() {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+              swiper.slides[i].style.transition = "";
+            }
+          },
+          setTransition: function(speed) {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+              swiper.slides[i].style.transition = speed + "ms";
+              swiper.slides[i].querySelector(".slide-inner").style.transition =
+                speed + "ms";
+            }
+          }
+        }
+      };
+
+      var swiper = new Swiper(".swiper-container", swiperOptions);
+
+      function openModal(titre,message){
+
+          let elementTitre = document.getElementById('alertModalLabel');
+          let elementMessage = document.getElementById('body-alert');
+
+          elementTitre.innerText = titre;
+          elementMessage.innerText = message;
+
+          var myModal = new bootstrap.Modal(document.getElementById('alertModal'));
+          myModal.show();
+      }
+
+    </script>
+  </body>
 </html>
