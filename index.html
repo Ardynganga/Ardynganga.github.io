@@ -9,6 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" type="image/png" href="assets/images/icon-500x500.png">
     <link href="assets/css/css2.css" rel="stylesheet">
+    <link href="assets/css/index.css" rel="stylesheet">
 
     <title>An-dev | Home</title>
 
@@ -81,7 +82,7 @@ https://templatemo.com/tm-574-mexant
             <div class="row">
               <div class="col-lg-8">
                 <div class="header-text">
-                  <h2>Salut Moi c'est <em>Ardy Nganga</em> Un développeur <br><em>passionné</em></h2>
+                  <h2 class="titre">Salut Moi c'est <em>Ardy Nganga</em> Un développeur <br><em>passionné</em></h2>
                   <div class="div-dec"></div>
                   <p>spécialisé dans la création de solutions web et mobiles innovantes. Fort d'une solide expertise en développement de logiciels, je m'engage à transformer vos idées en applications fonctionnelles, performantes et intuitives.</p>
                   <div class="buttons">
@@ -104,7 +105,7 @@ https://templatemo.com/tm-574-mexant
             <div class="row">
               <div class="col-lg-8">
                 <div class="header-text">
-                  <h2><em>Marketing Digital</em> Accélérez votre croissance en ligne<br>avec <em>Nous</em></h2>
+                  <h2 class="titre"><em>Marketing Digital</em> Accélérez votre croissance en ligne<br>avec <em>Nous</em></h2>
                   <div class="div-dec"></div>
                   <p>Nous vous aide à maximiser votre visibilité et à atteindre vos objectifs grâce à des stratégies de marketing digital ciblées et efficaces.</p>
                   <div class="buttons">
@@ -127,7 +128,7 @@ https://templatemo.com/tm-574-mexant
             <div class="row">
               <div class="col-lg-8">
                 <div class="header-text">
-                  <h2>Conception <br> <em>Graphique</em> avec Nous</h2>
+                  <h2 class="titre">Conception <br> <em>Graphique</em> avec Nous</h2>
                   <div class="div-dec"></div>
                   <p>Une image vaut mille mots, surtout dans le monde digital. Je crée des identités visuelles uniques et mémorables. </p>
                   <div class="buttons">
@@ -497,7 +498,7 @@ https://templatemo.com/tm-574-mexant
               </div>
               <div class="col-lg-12">
                 <fieldset>
-                  <button type="submit" id="form-submit" class="orange-button">S'abonnez</button>
+                  <button type="button" id="form-submit"  class="orange-button" onclick="abonnementNewletter()">S'abonnez</button>
                 </fieldset>
               </div>
             </div>
@@ -512,8 +513,8 @@ https://templatemo.com/tm-574-mexant
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading">
-            <h6>Testimonials</h6>
-            <h4>What They Say</h4>
+            <h6>Temoignages</h6>
+            <h4>Ce que mes clients disent</h4>
           </div>
         </div>
         <div class="col-lg-10 offset-lg-1">
@@ -677,6 +678,19 @@ https://templatemo.com/tm-574-mexant
 
           var myModal = new bootstrap.Modal(document.getElementById('alertModal'));
           myModal.show();
+      }
+
+      function abonnementNewletter(){
+        
+        let elementNom = document.getElementById("name").value;
+        let chooseOption = document.getElementById("chooseOption").value;
+        let elementMail = document.getElementById("email").value;
+
+        if (elementNom != "" && chooseOption && elementMail){
+          openModal("Merci de vous abonnez à notre newsletter","Vous serez informés des nos nouveautés.");
+        }else{
+          openModal("Certaines valeurs sont manquants","Veuiller remplir tous les champs présents sur le formulaire.");
+        }
       }
 
     </script>

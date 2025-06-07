@@ -155,7 +155,7 @@ body {
   font-size: 14px;
   color: #fff;
   background-color: #43ba7f;
-  padding: 12px 30px;
+  padding: 12px 12px;
   display: inline-block;
   border-radius: 5px;
   font-weight: 500;
@@ -172,7 +172,7 @@ body {
   font-size: 14px;
   color: #fff;
   background-color: #ff511a;
-  padding: 12px 30px;
+  padding: 12px 12px;
   display: inline-block;
   border-radius: 5px;
   font-weight: 500;
@@ -672,11 +672,23 @@ header
   .header-area .main-nav .nav li.submenu:hover ul, .header-area .main-nav .nav li.submenu:focus ul {
     height: 0px;
   }
+  .slide-inner .header-text h2 {
+    font-size: 10px;
+  }
+
 }
 
 @media (min-width: 767px) {
   .header-area .main-nav .nav {
     display: flex !important;
+  }
+
+  .green-button a {
+    padding: 10px;
+  }
+
+  .orange-button a {
+    padding: 10px;
   }
 }
 
@@ -792,6 +804,12 @@ banner
 
 .swiper-button-next, .swiper-button-prev {
   color: #fff !important;
+}
+
+@media (max-width: 767px) {
+  .slide-inner .header-text h2 {
+    font-size: 30px;
+  }
 }
 
 /*
