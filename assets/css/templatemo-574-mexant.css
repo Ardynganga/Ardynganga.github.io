@@ -672,9 +672,6 @@ header
   .header-area .main-nav .nav li.submenu:hover ul, .header-area .main-nav .nav li.submenu:focus ul {
     height: 0px;
   }
-  .slide-inner .header-text h2 {
-    font-size: 10px;
-  }
 
 }
 
@@ -809,6 +806,7 @@ banner
 @media (max-width: 767px) {
   .slide-inner .header-text h2 {
     font-size: 30px;
+    line-height: normal;
   }
 }
 
