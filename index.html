@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ardy Nganga Dev — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ── CURSOR ── -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- ── LOADER ── -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <span class="loader-text">AnDev</span>
+      <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    </div>
+  </div>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">An<span>Dev</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero" class="nav-link active" data-section="hero">Accueil</a></li>
+      <li><a href="#about" class="nav-link" data-section="about">À propos</a></li>
+      <li><a href="#skills" class="nav-link" data-section="skills">Compétences</a></li>
+      <li><a href="#projects" class="nav-link" data-section="projects">Projets</a></li>
+      <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Me contacter</a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="hero-grid-lines"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        Disponible pour des missions freelance
+      </div>
+
+      <h1 class="hero-title reveal">
+        <span class="line">Ardy Nganga</span>
+        <span class="line accent-line">Dev</span>
+      </h1>
+
+      <p class="hero-subtitle reveal">
+        Développeur Web &amp; Mobile Fullstack · DRC
+      </p>
+
+      <p class="hero-desc reveal">
+        Je conçois des expériences numériques modernes et performantes — du backend robuste avec <em>Django</em> aux applications mobiles fluides avec <em>Flutter</em>.
+      </p>
+
+      <div class="hero-actions reveal">
+        <a href="#projects" class="btn btn-primary">
+          <span>Voir mes projets</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#contact" class="btn btn-ghost">
+          <span>Me contacter</span>
+        </a>
+      </div>
+
+      <div class="hero-stats reveal">
+        <div class="stat">
+          <span class="stat-num" data-target="3">0</span><span>+</span>
+          <p>Ans d'expérience</p>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="25">0</span><span>+</span>
+          <p>Projets livrés</p>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="15">0</span><span>+</span>
+          <p>Clients satisfaits</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap reveal">
+      <div class="photo-ring ring-1"></div>
+      <div class="photo-ring ring-2"></div>
+      <div class="photo-ring ring-3"></div>
+      <div class="photo-glow"></div>
+      <img src="profile.png" alt="Ardy Nganga Dev" class="hero-photo" />
+      <div class="photo-badge-float">
+        <i class="fa-brands fa-python"></i>
+      </div>
+      <div class="photo-badge-float float-2">
+        <i class="fa-brands fa-flutter" style="font-family: 'Font Awesome 6 Brands'">F</i>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Défiler</span>
+      <div class="scroll-arrow">
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="section about" id="about">
+    <div class="section-bg-label">À PROPOS</div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Qui suis-je ?</span>
+        <h2 class="section-title">Passionné par le code,<br /><span>obsédé par les détails</span></h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            Je suis <strong>Ardy Nganga</strong>, développeur freelance basé à Kinshasa, République Démocratique du Congo. Mon pseudo dans l'univers du dev : <strong>AnDev</strong>.
+          </p>
+          <p>
+            Je construis des applications web et mobiles robustes, en combinant une logique backend solide avec des interfaces utilisateur élégantes. Chaque projet est une opportunité de pousser les limites de ce que le code peut créer.
+          </p>
+          <p>
+            Mon approche : comprendre d'abord le besoin métier, puis livrer une solution technique propre, scalable et maintenable — dans les délais convenus.
+          </p>
+          <div class="about-links">
+            <a href="mailto:ardyngangadev@gmail.com" class="about-link">
+              <i class="fa-solid fa-envelope"></i> ardyngangadev@gmail.com
+            </a>
+            <a href="tel:+243840445627" class="about-link">
+              <i class="fa-solid fa-phone"></i> +243 84 044 5627
+            </a>
+            <span class="about-link">
+              <i class="fa-solid fa-location-dot"></i> Kinshasa, RDC
+            </span>
+          </div>
+        </div>
+
+        <div class="about-cards reveal">
+          <div class="info-card">
+            <div class="info-card-icon"><i class="fa-solid fa-code"></i></div>
+            <h3>Web</h3>
+            <p>HTML, CSS, JavaScript, Django — interfaces réactives et APIs puissantes.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+            <h3>Mobile</h3>
+            <p>Flutter &amp; Dart — applications cross-platform iOS et Android, performantes.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon"><i class="fa-solid fa-server"></i></div>
+            <h3>Backend</h3>
+            <p>Python / Django REST Framework — architectures propres et sécurisées.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon"><i class="fa-solid fa-handshake"></i></div>
+            <h3>Freelance</h3>
+            <p>Collaboration directe, communication claire, livraison dans les délais.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section class="section skills" id="skills">
+    <div class="section-bg-label">SKILLS</div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Technologies</span>
+        <h2 class="section-title">Mon stack<br /><span>technique</span></h2>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Backend -->
+        <div class="skill-group reveal">
+          <h3 class="skill-group-title"><i class="fa-brands fa-python"></i> Backend</h3>
+          <div class="skill-items">
+            <div class="skill-item" data-level="90">
+              <div class="skill-info"><span>Python</span><span class="skill-pct">90%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div>
+            </div>
+            <div class="skill-item" data-level="85">
+              <div class="skill-info"><span>Django</span><span class="skill-pct">85%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="--pct:85%"></div></div>
+            </div>
+            <div class="skill-item" data-level="80">
+              <div class="skill-info"><span>Django REST API</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="skill-group reveal">
+          <h3 class="skill-group-title"><i class="fa-solid fa-mobile-screen"></i> Mobile</h3>
+          <div class="skill-items">
+            <div class="skill-item" data-level="88">
+              <div class="skill-info"><span>Flutter</span><span class="skill-pct">88%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="--pct:88%"></div></div>
+            </div>
+            <div class="skill-item" data-level="85">
+              <div class="skill-info"><span>Dart</span><span class="skill-pct">85%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="--pct:85%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skill-group reveal">
+          <h3 class="skill-group-title"><i class="fa-brands fa-html5"></i> Frontend Web</h3>
+          <div class="skill-items">
+            <div class="skill-item" data-level="92">
+              <div class="skill-info"><span>HTML5</span><span class="skill-pct">92%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="--pct:92%"></div></div>
+            </div>
+            <div class="skill-item" data-level="88">
+              <div class="skill-info"><span>CSS3</span><span class="skill-pct">88%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="--pct:88%"></div></div>
+            </div>
+            <div class="skill-item" data-level="80">
+              <div class="skill-info"><span>JavaScript</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="skill-group reveal">
+          <h3 class="skill-group-title"><i class="fa-solid fa-screwdriver-wrench"></i> Outils</h3>
+          <div class="skill-tech-pills">
+            <span class="pill">Git / GitHub</span>
+            <span class="pill">PostgreSQL</span>
+            <span class="pill">SQLite</span>
+            <span class="pill">REST API</span>
+            <span class="pill">VS Code</span>
+            <span class="pill">Figma</span>
+            <span class="pill">Linux</span>
+            <span class="pill">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section class="section projects" id="projects">
+    <div class="section-bg-label">PROJETS</div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">Projets<br /><span>récents</span></h2>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card reveal" data-tag="Web · Django">
+          <div class="project-img-wrap">
+            <div class="project-img" style="--hue:210">
+              <div class="project-mockup">
+                <div class="pm-bar"></div>
+                <div class="pm-content">
+                  <div class="pm-line w80"></div>
+                  <div class="pm-line w60"></div>
+                  <div class="pm-block"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="project-demo-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Web · Django</span>
+            <h3>Plateforme E-commerce</h3>
+            <p>Application e-commerce complète avec gestion des produits, panier, paiement et tableau de bord admin.</p>
+            <div class="project-techs">
+              <span>Django</span><span>Python</span><span>PostgreSQL</span><span>JS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-tag="Mobile · Flutter">
+          <div class="project-img-wrap">
+            <div class="project-img" style="--hue:190">
+              <div class="project-mockup mobile">
+                <div class="pm-phone">
+                  <div class="pm-screen">
+                    <div class="pm-line w70"></div>
+                    <div class="pm-line w50"></div>
+                    <div class="pm-block sm"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="project-demo-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Mobile · Flutter</span>
+            <h3>App de livraison</h3>
+            <p>Application mobile de livraison de repas avec tracking en temps réel, notifications push et paiement intégré.</p>
+            <div class="project-techs">
+              <span>Flutter</span><span>Dart</span><span>Firebase</span><span>REST API</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-tag="Web · API">
+          <div class="project-img-wrap">
+            <div class="project-img" style="--hue:230">
+              <div class="project-mockup">
+                <div class="pm-bar"></div>
+                <div class="pm-content">
+                  <div class="pm-line w90"></div>
+                  <div class="pm-line w55"></div>
+                  <div class="pm-block"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="project-demo-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">API · Django REST</span>
+            <h3>API de gestion scolaire</h3>
+            <p>Backend REST API pour la gestion des élèves, notes, emplois du temps et bulletins scolaires.</p>
+            <div class="project-techs">
+              <span>DRF</span><span>Python</span><span>SQLite</span><span>JWT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-tag="Mobile · Flutter">
+          <div class="project-img-wrap">
+            <div class="project-img" style="--hue:160">
+              <div class="project-mockup mobile">
+                <div class="pm-phone">
+                  <div class="pm-screen">
+                    <div class="pm-line w60"></div>
+                    <div class="pm-line w80"></div>
+                    <div class="pm-block sm"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="project-demo-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Mobile · Flutter</span>
+            <h3>App Finance Perso</h3>
+            <p>Suivi des dépenses, revenus et budgets avec graphiques analytiques et alertes personnalisables.</p>
+            <div class="project-techs">
+              <span>Flutter</span><span>Dart</span><span>SQLite</span><span>Charts</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="section contact" id="contact">
+    <div class="section-bg-label">CONTACT</div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Travaillons ensemble</span>
+        <h2 class="section-title">Démarrons votre<br /><span>prochain projet</span></h2>
+      </div>
+
+      <div class="contact-wrap">
+        <div class="contact-info reveal">
+          <h3>Prenez contact</h3>
+          <p>Disponible pour des missions freelance, des projets à long terme ou simplement une discussion autour d'une idée.</p>
+
+          <div class="contact-items">
+            <a href="mailto:ardyngangadev@gmail.com" class="contact-item">
+              <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <span class="ci-label">Email</span>
+                <span class="ci-val">ardyngangadev@gmail.com</span>
+              </div>
+            </a>
+            <a href="tel:+243840445627" class="contact-item">
+              <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <span class="ci-label">Téléphone / WhatsApp</span>
+                <span class="ci-val">+243 84 044 5627</span>
+              </div>
+            </a>
+            <span class="contact-item">
+              <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <span class="ci-label">Localisation</span>
+                <span class="ci-val">Kinshasa, RDC</span>
+              </div>
+            </span>
+          </div>
+
+          <div class="social-links">
+            <a href="https://github.com" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://wa.me/243840445627" target="_blank" class="social-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-btn" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nom complet</label>
+              <input type="text" id="name" name="name" placeholder="Votre nom" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="votre@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Sujet</label>
+            <input type="text" id="subject" name="subject" placeholder="Objet de votre message" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <span>Envoyer le message</span>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <div class="form-success" id="formSuccess">
+            <i class="fa-solid fa-circle-check"></i> Message envoyé avec succès !
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">An<span>Dev</span></div>
+      <p class="footer-copy">© 2025 Ardy Nganga Dev · Kinshasa, RDC · Tous droits réservés</p>
+      <div class="footer-top-btn" id="backTop">
+        <i class="fa-solid fa-arrow-up"></i>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
