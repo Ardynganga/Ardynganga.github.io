@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Page générée par tools/build.js à partir de assets/js/data/articles.js. Ne pas modifier à la main. -->
+  <title>Sécuriser une application Django : le guide pratique — Ardy Nganga</title>
+  <meta name="description" content="Réglages de production, contrôle d&#39;accès, injections, secrets et dépendances : les points à vérifier pour sécuriser une application Django.">
+  <meta name="author" content="Ardy Nganga">
+  <meta name="keywords" content="Django, sécurité, Python, OWASP, check --deploy">
+  <link rel="canonical" href="https://ardynganga.github.io/blog/securiser-une-application-django/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Ardy Nganga">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Sécuriser une application Django : le guide pratique">
+  <meta property="og:description" content="Réglages de production, contrôle d&#39;accès, injections, secrets et dépendances : les points à vérifier pour sécuriser une application Django.">
+  <meta property="og:url" content="https://ardynganga.github.io/blog/securiser-une-application-django/">
+  <meta property="og:image" content="https://ardynganga.github.io/assets/images/blog/securiser-une-application-django.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Le mot « Django » et le symbole Nganga sur fond bordeaux">
+  <meta property="article:published_time" content="2026-11-11">
+  <meta property="article:modified_time" content="2026-11-11">
+  <meta property="article:author" content="Ardy Nganga">
+  <meta property="article:section" content="Cybersécurité">
+  <meta property="article:tag" content="Django">
+  <meta property="article:tag" content="Python">
+  <meta property="article:tag" content="Sécurité">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sécuriser une application Django : le guide pratique">
+  <meta name="twitter:description" content="Réglages de production, contrôle d&#39;accès, injections, secrets et dépendances : les points à vérifier pour sécuriser une application Django.">
+  <meta name="twitter:image" content="https://ardynganga.github.io/assets/images/blog/securiser-une-application-django.jpg">
+  <!-- @include head -->
+  <meta name="theme-color" content="#460201">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Blog — Ardy Nganga" href="/blog/feed.xml">
+  <link rel="preload" href="/assets/fonts/cabin-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>
+    /* Applique le thème choisi (ou celui du système) avant le premier affichage. */
+    (function () {
+      try {
+        var theme = localStorage.getItem("theme");
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+      } catch (error) { /* stockage indisponible : la feuille de style suit le système */ }
+    })();
+  </script>
+  <!-- @end head -->
+  <link rel="stylesheet" href="/assets/css/blog.css">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"Comment sécuriser une application Django ?","description":"Réglages de production, contrôle d'accès, injections, secrets et dépendances : les points à vérifier pour sécuriser une application Django.","image":["https://ardynganga.github.io/assets/images/blog/securiser-une-application-django.jpg"],"datePublished":"2026-11-11","dateModified":"2026-11-11","author":{"@type":"Person","name":"Ardy Nganga","url":"https://ardynganga.github.io/"},"publisher":{"@type":"Person","name":"Ardy Nganga","url":"https://ardynganga.github.io/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ardynganga.github.io/blog/securiser-une-application-django/"},"articleSection":"Cybersécurité","keywords":"Django, sécurité, Python, OWASP, check --deploy","inLanguage":"fr","wordCount":682,"timeRequired":"PT3M"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ardynganga.github.io/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ardynganga.github.io/blog/"},{"@type":"ListItem","position":3,"name":"Comment sécuriser une application Django ?","item":"https://ardynganga.github.io/blog/securiser-une-application-django/"}]}]</script>
+</head>
+<body>
+  <!-- @include header current="blog" -->
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+        <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+        <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+      </a>
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu">
+        <svg class="icon icon--menu" aria-hidden="true"><use href="/assets/icons.svg#menu"/></svg>
+        <svg class="icon icon--close" aria-hidden="true"><use href="/assets/icons.svg#close"/></svg>
+      </button>
+      <nav class="site-nav" id="menu-principal" aria-label="Navigation principale">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/#services" data-nav="services">Services</a></li>
+          <li><a class="site-nav__link" href="/#realisations" data-nav="realisations">Réalisations</a></li>
+          <li><a class="site-nav__link" href="/pentest/" data-nav="pentest">Pentest</a></li>
+          <li><a class="site-nav__link" href="/blog/" data-nav="blog" aria-current="page">Blog</a></li>
+          <li><a class="site-nav__link" href="/#a-propos" data-nav="a-propos">À propos</a></li>
+        </ul>
+        <a class="btn btn--sm site-nav__cta" href="/#contact">Me contacter</a>
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Passer au thème sombre">
+          <svg class="icon icon--to-dark" aria-hidden="true"><use href="/assets/icons.svg#moon"/></svg>
+          <svg class="icon icon--to-light" aria-hidden="true"><use href="/assets/icons.svg#sun"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <!-- @end header -->
+  <main id="contenu" tabindex="-1">
+<div class="reading-progress" aria-hidden="true"><span class="reading-progress__bar"></span></div>
+<article class="article" data-article="securiser-une-application-django">
+  <header class="article__header band-ox">
+    <div class="wrap article__header-inner">
+      <nav aria-label="Fil d'Ariane">
+        <ol class="breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/blog/?categorie=cybersecurite">Cybersécurité</a></li>
+        </ol>
+      </nav>
+      <h1 class="article__title">Comment sécuriser une application Django ?</h1>
+      <p class="article__excerpt">Django protège beaucoup de choses par défaut, mais pas tout. Voici les réglages et les réflexes qui font la différence entre une application en ligne et une application défendue.</p>
+      <ul class="article__meta">
+        <li>Par <strong>Ardy Nganga</strong></li>
+        <li>Publié le <time datetime="2026-11-11">11 novembre 2026</time></li>
+        
+        <li>3 min de lecture</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="wrap article__layout">
+    <aside class="article__aside">
+      <nav class="toc" aria-labelledby="toc-title">
+      <h2 class="toc__title" id="toc-title"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#list"/></svg>Sommaire</h2>
+      <ol class="toc__list"><li class="toc__item toc__item--h2"><a href="#commencer-par-l-audit-integre">Commencer par l&#39;audit intégré</a></li><li class="toc__item toc__item--h2"><a href="#les-reglages-de-production">Les réglages de production</a></li><li class="toc__item toc__item--h3"><a href="#forcer-https-et-proteger-les-cookies">Forcer HTTPS et protéger les cookies</a></li><li class="toc__item toc__item--h2"><a href="#le-controle-d-acces-premiere-source-de-failles">Le contrôle d&#39;accès, première source de failles</a></li><li class="toc__item toc__item--h2"><a href="#injections-garder-l-orm-de-son-cote">Injections : garder l&#39;ORM de son côté</a></li><li class="toc__item toc__item--h2"><a href="#ralentir-les-attaques-sur-la-connexion">Ralentir les attaques sur la connexion</a></li><li class="toc__item toc__item--h2"><a href="#surveiller-les-dependances">Surveiller les dépendances</a></li><li class="toc__item toc__item--h2"><a href="#la-liste-a-garder-sous-la-main">La liste à garder sous la main</a></li></ol>
+    </nav>
+      <a class="link-arrow article__back" href="/blog/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-left"/></svg>Retour au blog</a>
+    </aside>
+    <div class="article__main">
+      <img class="article__cover" src="/assets/images/blog/securiser-une-application-django.jpg" alt="Le mot « Django » et le symbole Nganga sur fond bordeaux" width="1200" height="630" fetchpriority="high" decoding="async">
+      <div class="prose" data-prose>
+
+<p>Django a la réputation d'être un framework sûr, et elle est méritée : protection CSRF, échappement automatique dans les gabarits, requêtes paramétrées par l'ORM, hachage solide des mots de passe. Pourtant, la plupart des failles que je rencontre dans des applications Django ne viennent pas du framework. Elles viennent de la configuration de production et du code métier.</p>
+<p>Ce guide suit l'ordre dans lequel je vérifie une application avant sa mise en ligne.</p>
+
+<h2 id="commencer-par-l-audit-integre">Commencer par l'audit intégré</h2>
+<p>Django fournit une commande qui relit vos réglages comme le ferait un auditeur. Elle ne prend que quelques secondes.</p>
+<pre><code class="language-bash">python manage.py check --deploy</code></pre>
+<p>Chaque avertissement correspond à un réglage décrit ci-dessous. L'objectif est d'arriver à zéro avertissement avec les réglages de production, pas avec ceux de développement.</p>
+
+<h2 id="les-reglages-de-production">Les réglages de production</h2>
+<p>Trois réglages ne se discutent pas : <code>DEBUG</code> désactivé, une liste d'hôtes explicite et une clé secrète qui ne figure pas dans le dépôt.</p>
+<pre data-title="settings/prod.py"><code class="language-python">import os
+
+DEBUG = False
+ALLOWED_HOSTS = [&quot;www.exemple.cd&quot;]
+SECRET_KEY = os.environ[&quot;DJANGO_SECRET_KEY&quot;]   # jamais dans le code ni dans Git</code></pre>
+<p>Avec <code>DEBUG = True</code>, la moindre erreur affiche vos variables, vos chemins et une partie de votre configuration à n'importe quel visiteur.</p>
+
+<h3 id="forcer-https-et-proteger-les-cookies">Forcer HTTPS et protéger les cookies</h3>
+<pre data-title="settings/prod.py"><code class="language-python">SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 31536000            # un an, à activer une fois HTTPS stable
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+
+# Derrière un proxy (Nginx, Traefik…), indiquer comment reconnaître HTTPS
+SECURE_PROXY_SSL_HEADER = (&quot;HTTP_X_FORWARDED_PROTO&quot;, &quot;https&quot;)</code></pre>
+<p>Un cookie de session envoyé en clair sur un Wi-Fi public suffit à voler un compte. Ces lignes ferment cette porte.</p>
+
+<h2 id="le-controle-d-acces-premiere-source-de-failles">Le contrôle d'accès, première source de failles</h2>
+<p>Être connecté ne veut pas dire avoir le droit. La faille la plus fréquente, et la plus simple à exploiter, consiste à changer un identifiant dans l'adresse pour lire les données d'un autre.</p>
+<pre><code class="language-python"># Vulnérable : tout utilisateur connecté peut lire n&#39;importe quelle facture
+@login_required
+def facture(request, pk):
+    facture = get_object_or_404(Facture, pk=pk)
+    return render(request, &quot;facture.html&quot;, {&quot;facture&quot;: facture})
+
+
+# Corrigé : la requête elle-même est limitée au propriétaire
+@login_required
+def facture(request, pk):
+    facture = get_object_or_404(Facture, pk=pk, client=request.user)
+    return render(request, &quot;facture.html&quot;, {&quot;facture&quot;: facture})</code></pre>
+<p>La règle : le filtre d'appartenance se place dans la requête, pas dans un <code>if</code> ajouté après coup. Pour une API, la même logique s'applique dans <code>get_queryset()</code>. Une ressource qui ne vous appartient pas doit répondre comme si elle n'existait pas.</p>
+
+<h2 id="injections-garder-l-orm-de-son-cote">Injections : garder l'ORM de son côté</h2>
+<p>L'ORM paramètre les requêtes à votre place. Le danger revient dès que l'on assemble du SQL à la main.</p>
+<pre><code class="language-python"># Vulnérable : la valeur est collée dans la requête
+Client.objects.raw(f&quot;SELECT * FROM clients WHERE nom = &#39;{nom}&#39;&quot;)
+
+# Correct : la valeur est transmise comme paramètre
+Client.objects.raw(&quot;SELECT * FROM clients WHERE nom = %s&quot;, [nom])</code></pre>
+<p>Même vigilance dans les gabarits : l'échappement automatique protège contre le XSS tant que vous n'utilisez pas <code>|safe</code> ou <code>mark_safe()</code> sur un contenu saisi par un utilisateur.</p>
+
+<h2 id="ralentir-les-attaques-sur-la-connexion">Ralentir les attaques sur la connexion</h2>
+<p>Sans limite, un formulaire de connexion accepte des milliers d'essais par minute. Le paquet <code>django-axes</code> bloque un compte ou une adresse après plusieurs échecs.</p>
+<pre data-title="settings/base.py"><code class="language-python">AXES_FAILURE_LIMIT = 5      # essais autorisés
+AXES_COOLOFF_TIME = 1       # heure(s) de blocage</code></pre>
+<p>Ajoutez une longueur minimale de mot de passe dans <code>AUTH_PASSWORD_VALIDATORS</code> et, pour les comptes sensibles, une double authentification.</p>
+
+<h2 id="surveiller-les-dependances">Surveiller les dépendances</h2>
+<p>Une application sûre aujourd'hui ne l'est plus le jour où une faille est publiée dans une de ses bibliothèques.</p>
+<pre><code class="language-bash">pip install pip-audit
+pip-audit -r requirements.txt</code></pre>
+<p>Lancez cette vérification dans votre intégration continue et suivez les versions de sécurité de Django : elles sont annoncées à l'avance.</p>
+
+<h2 id="la-liste-a-garder-sous-la-main">La liste à garder sous la main</h2>
+<ul>
+  <li><code>check --deploy</code> sans avertissement avec les réglages de production.</li>
+  <li><code>DEBUG</code> désactivé, hôtes explicites, secrets dans l'environnement.</li>
+  <li>HTTPS forcé, HSTS activé, cookies marqués <code>Secure</code>.</li>
+  <li>Chaque vue filtre les données selon l'utilisateur connecté.</li>
+  <li>Aucun SQL assemblé avec des valeurs saisies.</li>
+  <li>Tentatives de connexion limitées et journalisées.</li>
+  <li>Dépendances auditées à chaque livraison.</li>
+</ul>
+<p>Ces vérifications couvrent l'essentiel, mais elles ne remplacent pas un regard extérieur : un test d'intrusion cherche ce que la liste ne prévoit pas, en particulier les erreurs de logique propres à votre métier.</p>
+
+      </div>
+      <footer class="article__footer">
+        <div><h2 class="article__footer-title">Sujets</h2><ul class="tag-list"><li><a class="tag" href="/blog/?tags=django">Django</a></li><li><a class="tag" href="/blog/?tags=python">Python</a></li><li><a class="tag" href="/blog/?tags=securite">Sécurité</a></li></ul></div>
+        <div class="share" data-share data-share-title="Comment sécuriser une application Django ?" data-share-text="Django protège beaucoup de choses par défaut, mais pas tout. Voici les réglages et les réflexes qui font la différence entre une application en ligne et une application défendue.">
+    <h2 class="share__title">Partager cet article</h2>
+    <div class="share__actions">
+      <button type="button" class="btn btn--sm" data-share-native hidden><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#share"/></svg>Partager</button>
+      <button type="button" class="btn btn--ghost btn--sm" data-share-copy><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#copy"/></svg><span>Copier le lien</span></button>
+      <a class="btn btn--ghost btn--sm" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fardynganga.github.io%2Fblog%2Fsecuriser-une-application-django%2F" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn btn--ghost btn--sm" href="https://wa.me/?text=Comment%20s%C3%A9curiser%20une%20application%20Django%20%3F%20https%3A%2F%2Fardynganga.github.io%2Fblog%2Fsecuriser-une-application-django%2F" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="btn btn--ghost btn--sm" href="https://twitter.com/intent/tweet?text=Comment%20s%C3%A9curiser%20une%20application%20Django%20%3F&amp;url=https%3A%2F%2Fardynganga.github.io%2Fblog%2Fsecuriser-une-application-django%2F" target="_blank" rel="noopener noreferrer">X</a>
+    </div>
+    <p class="share__status visually-hidden" role="status" aria-live="polite"></p>
+  </div>
+      </footer>
+    </div>
+  </div>
+
+  <nav class="wrap article-nav" aria-label="Navigation entre les articles">
+    <span></span>
+    <a class="article-nav__link article-nav__link--newer" href="/blog/tester-la-securite-d-une-api-rest/" rel="next">
+      <span class="article-nav__label">Article suivant<svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+      <span class="article-nav__title">Tester la sécurité d&#39;une API REST : par où commencer ?</span>
+    </a>
+  </nav>
+</article>
+<section class="section section--alt" aria-labelledby="similaires-title">
+  <div class="wrap">
+    <div class="section__head"><h2 id="similaires-title">Articles similaires</h2></div>
+    <div class="post-grid"><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant.jpg" alt="Le sigle « MCP » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Intelligence artificielle</p>
+      <h3 class="post-card__title"><a href="/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant/">Serveur MCP : connecter une IA à un système existant</a></h3>
+      <p class="post-card__excerpt">Le protocole MCP permet à un assistant IA d&#39;interroger vos outils et vos données sans réécrire votre système. Principe, exemple en Python et précautions de sécurité.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>3 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/tester-la-securite-d-une-api-rest.jpg" alt="Le mot « API » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Pentest</p>
+      <h3 class="post-card__title"><a href="/blog/tester-la-securite-d-une-api-rest/">Tester la sécurité d&#39;une API REST : par où commencer ?</a></h3>
+      <p class="post-card__excerpt">Une API expose directement vos données et vos règles métier. Voici la démarche que je suis pour l&#39;évaluer, du périmètre autorisé jusqu&#39;au rapport.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>4 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/flutter-hors-ligne-synchronisation.jpg" alt="Le mot « Flutter » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Flutter</p>
+      <h3 class="post-card__title"><a href="/blog/flutter-hors-ligne-synchronisation/">Flutter hors ligne : synchroniser sans perdre de données</a></h3>
+      <p class="post-card__excerpt">Sur le terrain, le réseau va et vient. Une application mobile fiable enregistre d&#39;abord sur l&#39;appareil, puis synchronise sans créer de doublon. Voici le schéma que j&#39;utilise.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>3 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article></div>
+  </div>
+</section>
+  </main>
+  <!-- @include footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+            <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+            <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+          </a>
+          <p class="site-footer__pitch">Ardy Nganga conçoit des applications Web, Mobile et Desktop, et teste leur sécurité avant qu'un attaquant ne le fasse.</p>
+        </div>
+        <nav aria-labelledby="pied-navigation">
+          <h2 class="site-footer__title" id="pied-navigation">Le site</h2>
+          <ul class="site-footer__list">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#realisations">Réalisations</a></li>
+            <li><a href="/pentest/">Tests d'intrusion</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#a-propos">À propos</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="site-footer__title">Contact</h2>
+          <ul class="site-footer__list">
+            <li><a href="mailto:ardyngangadev@gmail.com"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg>ardyngangadev@gmail.com</a></li>
+            <li><a href="https://wa.me/243840445627" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg>WhatsApp : +243 84 044 5627</a></li>
+            <li><a href="https://github.com/Ardynganga" target="_blank" rel="noopener noreferrer me"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#github"/></svg>GitHub</a></li>
+            
+            <li><a href="/blog/feed.xml"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#rss"/></svg>Flux RSS du blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span data-year>2026</span> Ardy Nganga · Kinshasa, RDC</p>
+        <a class="to-top" href="#contenu"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-up"/></svg>Haut de page</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="/assets/js/core/app.js"></script>
+  <!-- @end footer -->
+  <script type="module" src="/assets/js/blog/article.js"></script>
+</body>
+</html>

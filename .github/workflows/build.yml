@@ -1,0 +1,51 @@
+# Régénère les pages du blog, le sitemap et le flux RSS quand les données changent.
+# Publier un article revient alors à modifier assets/js/data/articles.js et à pousser.
+name: Générer le site
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "assets/js/data/**"
+      - "assets/js/blog/**"
+      - "assets/js/core/html.js"
+      - "tools/**"
+      - "index.html"
+      - "404.html"
+      - "pentest/**"
+      - "blog/index.html"
+  schedule:
+    # Chaque jour à 05 h 15 UTC : met en ligne les articles dont la date de publication est atteinte.
+    - cron: "15 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generation-du-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Tests
+        run: npm test
+      - name: Génération
+        run: node tools/build.js
+      - name: Enregistrer les fichiers générés
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Génère les pages du site"
+            git push
+          else
+            echo "Rien à générer."
+          fi

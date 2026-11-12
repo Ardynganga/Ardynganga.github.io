@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Page générée par tools/build.js à partir de assets/js/data/articles.js. Ne pas modifier à la main. -->
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="author" content="{{author}}">
+  <meta name="keywords" content="{{keywords}}">
+  <link rel="canonical" href="{{url}}">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="{{siteName}}">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="{{ogTitle}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{url}}">
+  <meta property="og:image" content="{{image}}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{imageAlt}}">
+  <meta property="article:published_time" content="{{published}}">
+  <meta property="article:modified_time" content="{{modified}}">
+  <meta property="article:author" content="{{author}}">
+  <meta property="article:section" content="{{section}}">
+{{articleTags}}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ogTitle}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="twitter:image" content="{{image}}">
+  <!-- @include head -->
+  <!-- @end head -->
+  <link rel="stylesheet" href="/assets/css/blog.css">
+  <script type="application/ld+json">{{jsonLd}}</script>
+</head>
+<body>
+  <!-- @include header current="blog" -->
+  <!-- @end header -->
+  <main id="contenu" tabindex="-1">
+{{main}}
+  </main>
+  <!-- @include footer -->
+  <!-- @end footer -->
+  <script type="module" src="/assets/js/blog/article.js"></script>
+</body>
+</html>

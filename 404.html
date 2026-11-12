@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page introuvable — Ardy Nganga</title>
+  <meta name="description" content="La page demandée n'existe pas ou a été déplacée.">
+  <meta name="robots" content="noindex">
+  <!-- @include head -->
+  <meta name="theme-color" content="#460201">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Blog — Ardy Nganga" href="/blog/feed.xml">
+  <link rel="preload" href="/assets/fonts/cabin-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>
+    /* Applique le thème choisi (ou celui du système) avant le premier affichage. */
+    (function () {
+      try {
+        var theme = localStorage.getItem("theme");
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+      } catch (error) { /* stockage indisponible : la feuille de style suit le système */ }
+    })();
+  </script>
+  <!-- @end head -->
+  <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+  <!-- @include header -->
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+        <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+        <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+      </a>
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu">
+        <svg class="icon icon--menu" aria-hidden="true"><use href="/assets/icons.svg#menu"/></svg>
+        <svg class="icon icon--close" aria-hidden="true"><use href="/assets/icons.svg#close"/></svg>
+      </button>
+      <nav class="site-nav" id="menu-principal" aria-label="Navigation principale">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/#services" data-nav="services">Services</a></li>
+          <li><a class="site-nav__link" href="/#realisations" data-nav="realisations">Réalisations</a></li>
+          <li><a class="site-nav__link" href="/pentest/" data-nav="pentest">Pentest</a></li>
+          <li><a class="site-nav__link" href="/blog/" data-nav="blog">Blog</a></li>
+          <li><a class="site-nav__link" href="/#a-propos" data-nav="a-propos">À propos</a></li>
+        </ul>
+        <a class="btn btn--sm site-nav__cta" href="/#contact">Me contacter</a>
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Passer au thème sombre">
+          <svg class="icon icon--to-dark" aria-hidden="true"><use href="/assets/icons.svg#moon"/></svg>
+          <svg class="icon icon--to-light" aria-hidden="true"><use href="/assets/icons.svg#sun"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <!-- @end header -->
+
+  <main id="contenu" tabindex="-1" data-not-found>
+    <section class="page-hero band-ox" aria-labelledby="nf-title">
+      <svg class="page-hero__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+      <div class="wrap">
+        <div class="page-hero__inner">
+          <h1 id="nf-title">Cette page n'existe pas</h1>
+          <p class="page-hero__lead">L'adresse est peut-être incomplète, ou la page a été déplacée. Voici où reprendre.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.9rem 1rem;margin-top:.75rem">
+            <a class="btn" href="/">Retour à l'accueil</a>
+            <a class="btn btn--ghost" href="/blog/">Voir le blog</a>
+            <a class="btn btn--ghost" href="/#contact">Me contacter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @include footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+            <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+            <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+          </a>
+          <p class="site-footer__pitch">Ardy Nganga conçoit des applications Web, Mobile et Desktop, et teste leur sécurité avant qu'un attaquant ne le fasse.</p>
+        </div>
+        <nav aria-labelledby="pied-navigation">
+          <h2 class="site-footer__title" id="pied-navigation">Le site</h2>
+          <ul class="site-footer__list">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#realisations">Réalisations</a></li>
+            <li><a href="/pentest/">Tests d'intrusion</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#a-propos">À propos</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="site-footer__title">Contact</h2>
+          <ul class="site-footer__list">
+            <li><a href="mailto:ardyngangadev@gmail.com"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg>ardyngangadev@gmail.com</a></li>
+            <li><a href="https://wa.me/243840445627" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg>WhatsApp : +243 84 044 5627</a></li>
+            <li><a href="https://github.com/Ardynganga" target="_blank" rel="noopener noreferrer me"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#github"/></svg>GitHub</a></li>
+            
+            <li><a href="/blog/feed.xml"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#rss"/></svg>Flux RSS du blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span data-year>2026</span> Ardy Nganga · Kinshasa, RDC</p>
+        <a class="to-top" href="#contenu"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-up"/></svg>Haut de page</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="/assets/js/core/app.js"></script>
+  <!-- @end footer -->
+  <script type="module" src="/assets/js/blog/fallback.js"></script>
+</body>
+</html>

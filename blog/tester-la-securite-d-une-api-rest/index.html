@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Page générée par tools/build.js à partir de assets/js/data/articles.js. Ne pas modifier à la main. -->
+  <title>Tester la sécurité d&#39;une API REST : méthode pas à pas — Ardy Nganga</title>
+  <meta name="description" content="Périmètre, inventaire, authentification, autorisations, données renvoyées et limites de débit : la méthode pour tester la sécurité d&#39;une API REST.">
+  <meta name="author" content="Ardy Nganga">
+  <meta name="keywords" content="API REST, pentest, OWASP API Security, JWT, test d&#39;intrusion">
+  <link rel="canonical" href="https://ardynganga.github.io/blog/tester-la-securite-d-une-api-rest/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Ardy Nganga">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Tester la sécurité d&#39;une API REST : méthode pas à pas">
+  <meta property="og:description" content="Périmètre, inventaire, authentification, autorisations, données renvoyées et limites de débit : la méthode pour tester la sécurité d&#39;une API REST.">
+  <meta property="og:url" content="https://ardynganga.github.io/blog/tester-la-securite-d-une-api-rest/">
+  <meta property="og:image" content="https://ardynganga.github.io/assets/images/blog/tester-la-securite-d-une-api-rest.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Le mot « API » et le symbole Nganga sur fond bordeaux">
+  <meta property="article:published_time" content="2026-11-11">
+  <meta property="article:modified_time" content="2026-11-11">
+  <meta property="article:author" content="Ardy Nganga">
+  <meta property="article:section" content="Pentest">
+  <meta property="article:tag" content="API">
+  <meta property="article:tag" content="Pentest">
+  <meta property="article:tag" content="JWT">
+  <meta property="article:tag" content="Sécurité">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tester la sécurité d&#39;une API REST : méthode pas à pas">
+  <meta name="twitter:description" content="Périmètre, inventaire, authentification, autorisations, données renvoyées et limites de débit : la méthode pour tester la sécurité d&#39;une API REST.">
+  <meta name="twitter:image" content="https://ardynganga.github.io/assets/images/blog/tester-la-securite-d-une-api-rest.jpg">
+  <!-- @include head -->
+  <meta name="theme-color" content="#460201">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Blog — Ardy Nganga" href="/blog/feed.xml">
+  <link rel="preload" href="/assets/fonts/cabin-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>
+    /* Applique le thème choisi (ou celui du système) avant le premier affichage. */
+    (function () {
+      try {
+        var theme = localStorage.getItem("theme");
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+      } catch (error) { /* stockage indisponible : la feuille de style suit le système */ }
+    })();
+  </script>
+  <!-- @end head -->
+  <link rel="stylesheet" href="/assets/css/blog.css">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"Tester la sécurité d'une API REST : par où commencer ?","description":"Périmètre, inventaire, authentification, autorisations, données renvoyées et limites de débit : la méthode pour tester la sécurité d'une API REST.","image":["https://ardynganga.github.io/assets/images/blog/tester-la-securite-d-une-api-rest.jpg"],"datePublished":"2026-11-11","dateModified":"2026-11-11","author":{"@type":"Person","name":"Ardy Nganga","url":"https://ardynganga.github.io/"},"publisher":{"@type":"Person","name":"Ardy Nganga","url":"https://ardynganga.github.io/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ardynganga.github.io/blog/tester-la-securite-d-une-api-rest/"},"articleSection":"Pentest","keywords":"API REST, pentest, OWASP API Security, JWT, test d'intrusion","inLanguage":"fr","wordCount":714,"timeRequired":"PT4M"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ardynganga.github.io/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ardynganga.github.io/blog/"},{"@type":"ListItem","position":3,"name":"Tester la sécurité d'une API REST : par où commencer ?","item":"https://ardynganga.github.io/blog/tester-la-securite-d-une-api-rest/"}]}]</script>
+</head>
+<body>
+  <!-- @include header current="blog" -->
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+        <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+        <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+      </a>
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu">
+        <svg class="icon icon--menu" aria-hidden="true"><use href="/assets/icons.svg#menu"/></svg>
+        <svg class="icon icon--close" aria-hidden="true"><use href="/assets/icons.svg#close"/></svg>
+      </button>
+      <nav class="site-nav" id="menu-principal" aria-label="Navigation principale">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/#services" data-nav="services">Services</a></li>
+          <li><a class="site-nav__link" href="/#realisations" data-nav="realisations">Réalisations</a></li>
+          <li><a class="site-nav__link" href="/pentest/" data-nav="pentest">Pentest</a></li>
+          <li><a class="site-nav__link" href="/blog/" data-nav="blog" aria-current="page">Blog</a></li>
+          <li><a class="site-nav__link" href="/#a-propos" data-nav="a-propos">À propos</a></li>
+        </ul>
+        <a class="btn btn--sm site-nav__cta" href="/#contact">Me contacter</a>
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Passer au thème sombre">
+          <svg class="icon icon--to-dark" aria-hidden="true"><use href="/assets/icons.svg#moon"/></svg>
+          <svg class="icon icon--to-light" aria-hidden="true"><use href="/assets/icons.svg#sun"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <!-- @end header -->
+  <main id="contenu" tabindex="-1">
+<div class="reading-progress" aria-hidden="true"><span class="reading-progress__bar"></span></div>
+<article class="article" data-article="tester-la-securite-d-une-api-rest">
+  <header class="article__header band-ox">
+    <div class="wrap article__header-inner">
+      <nav aria-label="Fil d'Ariane">
+        <ol class="breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/blog/?categorie=pentest">Pentest</a></li>
+        </ol>
+      </nav>
+      <h1 class="article__title">Tester la sécurité d&#39;une API REST : par où commencer ?</h1>
+      <p class="article__excerpt">Une API expose directement vos données et vos règles métier. Voici la démarche que je suis pour l&#39;évaluer, du périmètre autorisé jusqu&#39;au rapport.</p>
+      <ul class="article__meta">
+        <li>Par <strong>Ardy Nganga</strong></li>
+        <li>Publié le <time datetime="2026-11-11">11 novembre 2026</time></li>
+        
+        <li>4 min de lecture</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="wrap article__layout">
+    <aside class="article__aside">
+      <nav class="toc" aria-labelledby="toc-title">
+      <h2 class="toc__title" id="toc-title"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#list"/></svg>Sommaire</h2>
+      <ol class="toc__list"><li class="toc__item toc__item--h2"><a href="#avant-tout-une-autorisation-ecrite">Avant tout : une autorisation écrite</a></li><li class="toc__item toc__item--h2"><a href="#1-dresser-l-inventaire">1. Dresser l&#39;inventaire</a></li><li class="toc__item toc__item--h2"><a href="#2-eprouver-l-authentification">2. Éprouver l&#39;authentification</a></li><li class="toc__item toc__item--h2"><a href="#3-verifier-les-autorisations-objet-par-objet">3. Vérifier les autorisations, objet par objet</a></li><li class="toc__item toc__item--h3"><a href="#les-fonctions-reservees">Les fonctions réservées</a></li><li class="toc__item toc__item--h2"><a href="#4-regarder-ce-que-l-api-accepte-et-renvoie">4. Regarder ce que l&#39;API accepte et renvoie</a></li><li class="toc__item toc__item--h2"><a href="#5-mesurer-les-limites">5. Mesurer les limites</a></li><li class="toc__item toc__item--h2"><a href="#6-rendre-le-resultat-utilisable">6. Rendre le résultat utilisable</a></li><li class="toc__item toc__item--h2"><a href="#a-retenir">À retenir</a></li></ol>
+    </nav>
+      <a class="link-arrow article__back" href="/blog/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-left"/></svg>Retour au blog</a>
+    </aside>
+    <div class="article__main">
+      <img class="article__cover" src="/assets/images/blog/tester-la-securite-d-une-api-rest.jpg" alt="Le mot « API » et le symbole Nganga sur fond bordeaux" width="1200" height="630" fetchpriority="high" decoding="async">
+      <div class="prose" data-prose>
+
+<p>Une application mobile ou un site moderne n'est souvent qu'une façade : tout se joue dans l'API. Si elle accepte une requête, peu importe ce que l'interface interdisait. C'est pourquoi le test d'une API est devenu le cœur d'un test d'intrusion applicatif.</p>
+
+<h2 id="avant-tout-une-autorisation-ecrite">Avant tout : une autorisation écrite</h2>
+<p>Tester un système sans l'accord de son propriétaire est illégal, même avec de bonnes intentions. Un test sérieux commence par un document signé qui précise :</p>
+<ul>
+  <li>les adresses et environnements concernés, de préférence une préproduction ;</li>
+  <li>les dates et les plages horaires des tests ;</li>
+  <li>les comptes de test fournis, au moins deux par rôle ;</li>
+  <li>ce qui est exclu : déni de service, données réelles de clients, services tiers.</li>
+</ul>
+<p>Les exemples ci-dessous supposent ce cadre. Le domaine <code>api.exemple.test</code> est fictif.</p>
+
+<h2 id="1-dresser-l-inventaire">1. Dresser l'inventaire</h2>
+<p>On ne teste bien que ce que l'on connaît. La documentation OpenAPI, quand elle existe, donne la liste des routes, des méthodes et des paramètres. Elle se complète par l'observation du trafic de l'application avec un proxy d'interception.</p>
+<p>Cherchez aussi ce qui n'est pas documenté : anciennes versions encore servies (<code>/v1/</code> alors que l'application utilise <code>/v2/</code>), routes d'administration, environnements de test oubliés. Les versions abandonnées gardent souvent les failles corrigées ailleurs.</p>
+
+<h2 id="2-eprouver-l-authentification">2. Éprouver l'authentification</h2>
+<p>Pour une API à jetons JWT, quelques questions simples révèlent beaucoup :</p>
+<ul>
+  <li>Une route protégée répond-elle sans jeton ?</li>
+  <li>Un jeton expiré est-il vraiment refusé ?</li>
+  <li>Un jeton dont le contenu a été modifié sans nouvelle signature est-il rejeté ?</li>
+  <li>Le jeton reste-t-il valable après la déconnexion ?</li>
+</ul>
+<pre><code class="language-bash"># Sans jeton : la réponse attendue est 401
+curl -s -o /dev/null -w &quot;%{http_code}\n&quot; https://api.exemple.test/v1/commandes/
+
+# Avec le jeton du compte de test A
+curl -s -H &quot;Authorization: Bearer $JETON_A&quot; https://api.exemple.test/v1/commandes/</code></pre>
+
+<h2 id="3-verifier-les-autorisations-objet-par-objet">3. Vérifier les autorisations, objet par objet</h2>
+<p>C'est le premier risque du classement OWASP API Security : l'API vérifie que vous êtes connecté, mais pas que l'objet demandé est le vôtre. Le test demande deux comptes.</p>
+<pre><code class="language-bash"># La commande 1042 appartient au compte B. On la demande avec le jeton de A.
+curl -s -o /dev/null -w &quot;%{http_code}\n&quot; \
+  -H &quot;Authorization: Bearer $JETON_A&quot; \
+  https://api.exemple.test/v1/commandes/1042/</code></pre>
+<p>Une réponse <code>200</code> est une faille : n'importe quel client peut lire les commandes des autres en parcourant les numéros. La réponse attendue est <code>404</code> ou <code>403</code>. Le test se répète pour chaque méthode, car une lecture bien protégée cohabite parfois avec une modification ou une suppression oubliées.</p>
+
+<h3 id="les-fonctions-reservees">Les fonctions réservées</h3>
+<p>Même principe pour les rôles : un compte client ne doit pas atteindre les routes d'administration, même en devinant leur adresse.</p>
+
+<h2 id="4-regarder-ce-que-l-api-accepte-et-renvoie">4. Regarder ce que l'API accepte et renvoie</h2>
+<p>Deux défauts vont souvent ensemble. Le premier : l'API renvoie plus de champs que l'écran n'en affiche (adresse, téléphone, rôle interne). Le second : elle accepte en écriture des champs que l'utilisateur ne devrait pas contrôler.</p>
+<pre><code class="language-bash">curl -s -X PATCH https://api.exemple.test/v1/profil/ \
+  -H &quot;Authorization: Bearer $JETON_A&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;nom&quot;: &quot;Test&quot;, &quot;role&quot;: &quot;admin&quot;, &quot;solde&quot;: 99999}&#39;</code></pre>
+<p>Si le rôle ou le solde changent, le serveur fait confiance au client. La correction se fait côté serveur : une liste explicite de champs modifiables, et des montants toujours recalculés par le serveur.</p>
+
+<h2 id="5-mesurer-les-limites">5. Mesurer les limites</h2>
+<p>Une API sans limite de débit laisse deviner des mots de passe, aspirer des données ou saturer le service.</p>
+<pre><code class="language-bash">for i in $(seq 1 20); do
+  curl -s -o /dev/null -w &quot;%{http_code}\n&quot; -X POST https://api.exemple.test/v1/auth/login/ \
+    -H &quot;Content-Type: application/json&quot; \
+    -d &#39;{&quot;email&quot;: &quot;test@exemple.test&quot;, &quot;password&quot;: &quot;incorrect&quot;}&#39;
+done</code></pre>
+<p>Vingt réponses <code>401</code> d'affilée, sans blocage ni <code>429</code>, signalent une connexion exposée aux essais en série. Ce test reste volontairement modeste : il s'agit de constater l'absence de limite, pas de mettre le service à genoux.</p>
+
+<h2 id="6-rendre-le-resultat-utilisable">6. Rendre le résultat utilisable</h2>
+<p>Un test n'a de valeur que si l'équipe peut corriger. Chaque constat du rapport contient :</p>
+<ul>
+  <li>un niveau de criticité, de critique à faible ;</li>
+  <li>la requête exacte qui permet de reproduire le problème ;</li>
+  <li>l'impact concret pour l'entreprise ;</li>
+  <li>la correction recommandée, puis une contre-vérification une fois le correctif livré.</li>
+</ul>
+
+<h2 id="a-retenir">À retenir</h2>
+<p>La majorité des failles d'API ne demandent aucun outil sophistiqué : deux comptes, de la méthode et de la rigueur. Elles échappent pourtant aux scanners automatiques, parce qu'elles tiennent à la logique de votre métier. C'est là qu'un test manuel apporte le plus.</p>
+
+      </div>
+      <footer class="article__footer">
+        <div><h2 class="article__footer-title">Sujets</h2><ul class="tag-list"><li><a class="tag" href="/blog/?tags=api">API</a></li><li><a class="tag" href="/blog/?tags=pentest">Pentest</a></li><li><a class="tag" href="/blog/?tags=jwt">JWT</a></li><li><a class="tag" href="/blog/?tags=securite">Sécurité</a></li></ul></div>
+        <div class="share" data-share data-share-title="Tester la sécurité d&#39;une API REST : par où commencer ?" data-share-text="Une API expose directement vos données et vos règles métier. Voici la démarche que je suis pour l&#39;évaluer, du périmètre autorisé jusqu&#39;au rapport.">
+    <h2 class="share__title">Partager cet article</h2>
+    <div class="share__actions">
+      <button type="button" class="btn btn--sm" data-share-native hidden><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#share"/></svg>Partager</button>
+      <button type="button" class="btn btn--ghost btn--sm" data-share-copy><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#copy"/></svg><span>Copier le lien</span></button>
+      <a class="btn btn--ghost btn--sm" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fardynganga.github.io%2Fblog%2Ftester-la-securite-d-une-api-rest%2F" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn btn--ghost btn--sm" href="https://wa.me/?text=Tester%20la%20s%C3%A9curit%C3%A9%20d'une%20API%20REST%20%3A%20par%20o%C3%B9%20commencer%20%3F%20https%3A%2F%2Fardynganga.github.io%2Fblog%2Ftester-la-securite-d-une-api-rest%2F" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="btn btn--ghost btn--sm" href="https://twitter.com/intent/tweet?text=Tester%20la%20s%C3%A9curit%C3%A9%20d'une%20API%20REST%20%3A%20par%20o%C3%B9%20commencer%20%3F&amp;url=https%3A%2F%2Fardynganga.github.io%2Fblog%2Ftester-la-securite-d-une-api-rest%2F" target="_blank" rel="noopener noreferrer">X</a>
+    </div>
+    <p class="share__status visually-hidden" role="status" aria-live="polite"></p>
+  </div>
+      </footer>
+    </div>
+  </div>
+
+  <nav class="wrap article-nav" aria-label="Navigation entre les articles">
+    <a class="article-nav__link article-nav__link--older" href="/blog/securiser-une-application-django/" rel="prev">
+      <span class="article-nav__label"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-left"/></svg>Article précédent</span>
+      <span class="article-nav__title">Comment sécuriser une application Django ?</span>
+    </a>
+    <a class="article-nav__link article-nav__link--newer" href="/blog/flutter-hors-ligne-synchronisation/" rel="next">
+      <span class="article-nav__label">Article suivant<svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+      <span class="article-nav__title">Flutter hors ligne : synchroniser sans perdre de données</span>
+    </a>
+  </nav>
+</article>
+<section class="section section--alt" aria-labelledby="similaires-title">
+  <div class="wrap">
+    <div class="section__head"><h2 id="similaires-title">Articles similaires</h2></div>
+    <div class="post-grid"><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/flutter-hors-ligne-synchronisation.jpg" alt="Le mot « Flutter » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Flutter</p>
+      <h3 class="post-card__title"><a href="/blog/flutter-hors-ligne-synchronisation/">Flutter hors ligne : synchroniser sans perdre de données</a></h3>
+      <p class="post-card__excerpt">Sur le terrain, le réseau va et vient. Une application mobile fiable enregistre d&#39;abord sur l&#39;appareil, puis synchronise sans créer de doublon. Voici le schéma que j&#39;utilise.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>3 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/securiser-une-application-django.jpg" alt="Le mot « Django » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Cybersécurité</p>
+      <h3 class="post-card__title"><a href="/blog/securiser-une-application-django/">Comment sécuriser une application Django ?</a></h3>
+      <p class="post-card__excerpt">Django protège beaucoup de choses par défaut, mais pas tout. Voici les réglages et les réflexes qui font la différence entre une application en ligne et une application défendue.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>3 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant.jpg" alt="Le sigle « MCP » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Intelligence artificielle</p>
+      <h3 class="post-card__title"><a href="/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant/">Serveur MCP : connecter une IA à un système existant</a></h3>
+      <p class="post-card__excerpt">Le protocole MCP permet à un assistant IA d&#39;interroger vos outils et vos données sans réécrire votre système. Principe, exemple en Python et précautions de sécurité.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>3 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article></div>
+  </div>
+</section>
+  </main>
+  <!-- @include footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+            <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+            <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+          </a>
+          <p class="site-footer__pitch">Ardy Nganga conçoit des applications Web, Mobile et Desktop, et teste leur sécurité avant qu'un attaquant ne le fasse.</p>
+        </div>
+        <nav aria-labelledby="pied-navigation">
+          <h2 class="site-footer__title" id="pied-navigation">Le site</h2>
+          <ul class="site-footer__list">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#realisations">Réalisations</a></li>
+            <li><a href="/pentest/">Tests d'intrusion</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#a-propos">À propos</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="site-footer__title">Contact</h2>
+          <ul class="site-footer__list">
+            <li><a href="mailto:ardyngangadev@gmail.com"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg>ardyngangadev@gmail.com</a></li>
+            <li><a href="https://wa.me/243840445627" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg>WhatsApp : +243 84 044 5627</a></li>
+            <li><a href="https://github.com/Ardynganga" target="_blank" rel="noopener noreferrer me"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#github"/></svg>GitHub</a></li>
+            
+            <li><a href="/blog/feed.xml"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#rss"/></svg>Flux RSS du blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span data-year>2026</span> Ardy Nganga · Kinshasa, RDC</p>
+        <a class="to-top" href="#contenu"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-up"/></svg>Haut de page</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="/assets/js/core/app.js"></script>
+  <!-- @end footer -->
+  <script type="module" src="/assets/js/blog/article.js"></script>
+</body>
+</html>

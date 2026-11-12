@@ -1,0 +1,13 @@
+{
+  "name": "Ardy Nganga — Web, Mobile, Pentest",
+  "short_name": "Nganga",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#460201",
+  "theme_color": "#460201",
+  "icons": [
+    { "src": "/assets/brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/brand/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

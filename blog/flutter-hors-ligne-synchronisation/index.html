@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Page générée par tools/build.js à partir de assets/js/data/articles.js. Ne pas modifier à la main. -->
+  <title>Flutter hors ligne : base locale et synchronisation fiable — Ardy Nganga</title>
+  <meta name="description" content="Base locale avec Drift, file d&#39;attente d&#39;opérations, identifiants générés sur l&#39;appareil et API idempotente : construire une application Flutter qui fonctionne sans réseau.">
+  <meta name="author" content="Ardy Nganga">
+  <meta name="keywords" content="Flutter, hors ligne, offline-first, Drift, synchronisation, idempotence">
+  <link rel="canonical" href="https://ardynganga.github.io/blog/flutter-hors-ligne-synchronisation/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Ardy Nganga">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Flutter hors ligne : base locale et synchronisation fiable">
+  <meta property="og:description" content="Base locale avec Drift, file d&#39;attente d&#39;opérations, identifiants générés sur l&#39;appareil et API idempotente : construire une application Flutter qui fonctionne sans réseau.">
+  <meta property="og:url" content="https://ardynganga.github.io/blog/flutter-hors-ligne-synchronisation/">
+  <meta property="og:image" content="https://ardynganga.github.io/assets/images/blog/flutter-hors-ligne-synchronisation.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Le mot « Flutter » et le symbole Nganga sur fond bordeaux">
+  <meta property="article:published_time" content="2026-11-11">
+  <meta property="article:modified_time" content="2026-11-11">
+  <meta property="article:author" content="Ardy Nganga">
+  <meta property="article:section" content="Flutter">
+  <meta property="article:tag" content="Flutter">
+  <meta property="article:tag" content="Dart">
+  <meta property="article:tag" content="SQLite">
+  <meta property="article:tag" content="API">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Flutter hors ligne : base locale et synchronisation fiable">
+  <meta name="twitter:description" content="Base locale avec Drift, file d&#39;attente d&#39;opérations, identifiants générés sur l&#39;appareil et API idempotente : construire une application Flutter qui fonctionne sans réseau.">
+  <meta name="twitter:image" content="https://ardynganga.github.io/assets/images/blog/flutter-hors-ligne-synchronisation.jpg">
+  <!-- @include head -->
+  <meta name="theme-color" content="#460201">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Blog — Ardy Nganga" href="/blog/feed.xml">
+  <link rel="preload" href="/assets/fonts/cabin-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>
+    /* Applique le thème choisi (ou celui du système) avant le premier affichage. */
+    (function () {
+      try {
+        var theme = localStorage.getItem("theme");
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+      } catch (error) { /* stockage indisponible : la feuille de style suit le système */ }
+    })();
+  </script>
+  <!-- @end head -->
+  <link rel="stylesheet" href="/assets/css/blog.css">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"Flutter hors ligne : synchroniser sans perdre de données","description":"Base locale avec Drift, file d'attente d'opérations, identifiants générés sur l'appareil et API idempotente : construire une application Flutter qui fonctionne sans réseau.","image":["https://ardynganga.github.io/assets/images/blog/flutter-hors-ligne-synchronisation.jpg"],"datePublished":"2026-11-11","dateModified":"2026-11-11","author":{"@type":"Person","name":"Ardy Nganga","url":"https://ardynganga.github.io/"},"publisher":{"@type":"Person","name":"Ardy Nganga","url":"https://ardynganga.github.io/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ardynganga.github.io/blog/flutter-hors-ligne-synchronisation/"},"articleSection":"Flutter","keywords":"Flutter, hors ligne, offline-first, Drift, synchronisation, idempotence","inLanguage":"fr","wordCount":618,"timeRequired":"PT3M"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ardynganga.github.io/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ardynganga.github.io/blog/"},{"@type":"ListItem","position":3,"name":"Flutter hors ligne : synchroniser sans perdre de données","item":"https://ardynganga.github.io/blog/flutter-hors-ligne-synchronisation/"}]}]</script>
+</head>
+<body>
+  <!-- @include header current="blog" -->
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+        <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+        <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+      </a>
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu">
+        <svg class="icon icon--menu" aria-hidden="true"><use href="/assets/icons.svg#menu"/></svg>
+        <svg class="icon icon--close" aria-hidden="true"><use href="/assets/icons.svg#close"/></svg>
+      </button>
+      <nav class="site-nav" id="menu-principal" aria-label="Navigation principale">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/#services" data-nav="services">Services</a></li>
+          <li><a class="site-nav__link" href="/#realisations" data-nav="realisations">Réalisations</a></li>
+          <li><a class="site-nav__link" href="/pentest/" data-nav="pentest">Pentest</a></li>
+          <li><a class="site-nav__link" href="/blog/" data-nav="blog" aria-current="page">Blog</a></li>
+          <li><a class="site-nav__link" href="/#a-propos" data-nav="a-propos">À propos</a></li>
+        </ul>
+        <a class="btn btn--sm site-nav__cta" href="/#contact">Me contacter</a>
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Passer au thème sombre">
+          <svg class="icon icon--to-dark" aria-hidden="true"><use href="/assets/icons.svg#moon"/></svg>
+          <svg class="icon icon--to-light" aria-hidden="true"><use href="/assets/icons.svg#sun"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <!-- @end header -->
+  <main id="contenu" tabindex="-1">
+<div class="reading-progress" aria-hidden="true"><span class="reading-progress__bar"></span></div>
+<article class="article" data-article="flutter-hors-ligne-synchronisation">
+  <header class="article__header band-ox">
+    <div class="wrap article__header-inner">
+      <nav aria-label="Fil d'Ariane">
+        <ol class="breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/blog/?categorie=flutter">Flutter</a></li>
+        </ol>
+      </nav>
+      <h1 class="article__title">Flutter hors ligne : synchroniser sans perdre de données</h1>
+      <p class="article__excerpt">Sur le terrain, le réseau va et vient. Une application mobile fiable enregistre d&#39;abord sur l&#39;appareil, puis synchronise sans créer de doublon. Voici le schéma que j&#39;utilise.</p>
+      <ul class="article__meta">
+        <li>Par <strong>Ardy Nganga</strong></li>
+        <li>Publié le <time datetime="2026-11-11">11 novembre 2026</time></li>
+        
+        <li>3 min de lecture</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="wrap article__layout">
+    <aside class="article__aside">
+      <nav class="toc" aria-labelledby="toc-title">
+      <h2 class="toc__title" id="toc-title"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#list"/></svg>Sommaire</h2>
+      <ol class="toc__list"><li class="toc__item toc__item--h2"><a href="#le-principe-ecrire-en-local-envoyer-plus-tard">Le principe : écrire en local, envoyer plus tard</a></li><li class="toc__item toc__item--h2"><a href="#la-base-locale-avec-drift">La base locale avec Drift</a></li><li class="toc__item toc__item--h3"><a href="#l-identifiant-nait-sur-l-appareil">L&#39;identifiant naît sur l&#39;appareil</a></li><li class="toc__item toc__item--h2"><a href="#une-api-qui-accepte-les-repetitions">Une API qui accepte les répétitions</a></li><li class="toc__item toc__item--h2"><a href="#la-boucle-de-synchronisation">La boucle de synchronisation</a></li><li class="toc__item toc__item--h2"><a href="#dire-la-verite-a-l-utilisateur">Dire la vérité à l&#39;utilisateur</a></li><li class="toc__item toc__item--h2"><a href="#les-pieges-a-eviter">Les pièges à éviter</a></li></ol>
+    </nav>
+      <a class="link-arrow article__back" href="/blog/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-left"/></svg>Retour au blog</a>
+    </aside>
+    <div class="article__main">
+      <img class="article__cover" src="/assets/images/blog/flutter-hors-ligne-synchronisation.jpg" alt="Le mot « Flutter » et le symbole Nganga sur fond bordeaux" width="1200" height="630" fetchpriority="high" decoding="async">
+      <div class="prose" data-prose>
+
+<p>Un agent qui encaisse une taxe sur un marché, un livreur dans un sous-sol, un infirmier dans une zone mal couverte : aucun ne peut attendre que le réseau revienne. Si l'application affiche une erreur au moment d'enregistrer, le travail est perdu, ou noté sur papier.</p>
+<p>La réponse tient en une phrase : <strong>l'appareil est la première destination des données, le serveur la seconde</strong>. Tout le reste en découle.</p>
+
+<h2 id="le-principe-ecrire-en-local-envoyer-plus-tard">Le principe : écrire en local, envoyer plus tard</h2>
+<p>Chaque action de l'utilisateur est enregistrée immédiatement dans une base locale et placée dans une file d'attente. Un processus séparé vide cette file quand le réseau est disponible. L'écran ne dépend jamais d'un appel réseau pour confirmer une saisie.</p>
+
+<h2 id="la-base-locale-avec-drift">La base locale avec Drift</h2>
+<p>Drift ajoute à SQLite des requêtes typées et des migrations. La table ci-dessous sert de file d'attente.</p>
+<pre data-title="lib/data/tables.dart"><code class="language-dart">enum StatutSync { enAttente, envoyee, rejetee }
+
+class Operations extends Table {
+  TextColumn get id =&gt; text()();                  // UUID créé sur l&#39;appareil
+  TextColumn get type =&gt; text()();
+  TextColumn get donnees =&gt; text()();             // contenu JSON
+  IntColumn get statut =&gt; intEnum&lt;StatutSync&gt;()();
+  DateTimeColumn get creeLe =&gt; dateTime()();
+
+  @override
+  Set&lt;Column&gt; get primaryKey =&gt; {id};
+}</code></pre>
+
+<h3 id="l-identifiant-nait-sur-l-appareil">L'identifiant naît sur l'appareil</h3>
+<p>C'est le détail qui change tout. Si le serveur attribue l'identifiant, l'application ne peut pas savoir si une opération envoyée juste avant une coupure a été reçue. Avec un UUID généré sur le téléphone, la même opération porte le même identifiant à chaque tentative.</p>
+<pre><code class="language-dart">Future&lt;void&gt; enregistrerPerception(Map&lt;String, dynamic&gt; donnees) {
+  return db.into(db.operations).insert(
+    OperationsCompanion.insert(
+      id: const Uuid().v4(),
+      type: &#39;perception&#39;,
+      donnees: jsonEncode(donnees),
+      statut: StatutSync.enAttente,
+      creeLe: DateTime.now(),
+    ),
+  );
+}</code></pre>
+
+<h2 id="une-api-qui-accepte-les-repetitions">Une API qui accepte les répétitions</h2>
+<p>Côté serveur, renvoyer deux fois la même opération ne doit jamais créer deux enregistrements. C'est ce que l'on appelle une création idempotente. Avec Django, quelques lignes suffisent.</p>
+<pre><code class="language-python">operation, creee = Operation.objects.get_or_create(
+    id=request.headers[&quot;Idempotency-Key&quot;],
+    defaults={&quot;agent&quot;: request.user, &quot;donnees&quot;: request.data},
+)
+return Response(serialiser(operation), status=201 if creee else 200)</code></pre>
+<p>Première réception : <code>201</code>. Renvoi après une coupure : <code>200</code> avec le même objet. Dans les deux cas, l'application peut marquer l'opération comme envoyée.</p>
+
+<h2 id="la-boucle-de-synchronisation">La boucle de synchronisation</h2>
+<pre data-title="lib/sync/synchronisation.dart"><code class="language-dart">Future&lt;void&gt; synchroniser() async {
+  final enAttente = await (db.select(db.operations)
+        ..where((o) =&gt; o.statut.equalsValue(StatutSync.enAttente))
+        ..orderBy([(o) =&gt; OrderingTerm.asc(o.creeLe)]))
+      .get();
+
+  for (final op in enAttente) {
+    try {
+      final reponse = await http.post(
+        Uri.parse(&#39;$baseUrl/api/v1/operations/&#39;),
+        headers: {
+          &#39;Authorization&#39;: &#39;Bearer $jeton&#39;,
+          &#39;Content-Type&#39;: &#39;application/json&#39;,
+          &#39;Idempotency-Key&#39;: op.id,
+        },
+        body: op.donnees,
+      );
+
+      if (reponse.statusCode == 200 || reponse.statusCode == 201) {
+        await marquer(op.id, StatutSync.envoyee);
+      } else if (reponse.statusCode &gt;= 400 &amp;&amp; reponse.statusCode &lt; 500) {
+        await marquer(op.id, StatutSync.rejetee);   // refus définitif
+      } else {
+        break;                                      // serveur indisponible
+      }
+    } on SocketException {
+      break;                                        // plus de réseau
+    }
+  }
+}</code></pre>
+<p>Trois issues, trois comportements :</p>
+<ul>
+  <li><strong>Succès</strong> : l'opération quitte la file.</li>
+  <li><strong>Refus du serveur</strong> (erreur 4xx) : réessayer ne servira à rien. L'opération est marquée et présentée à l'utilisateur avec le motif.</li>
+  <li><strong>Panne ou coupure</strong> : on s'arrête et on réessaiera, dans le même ordre.</li>
+</ul>
+
+<h2 id="dire-la-verite-a-l-utilisateur">Dire la vérité à l'utilisateur</h2>
+<p>Une application hors ligne doit montrer son état : nombre d'opérations en attente, date de la dernière synchronisation, opérations refusées. Sans cela, l'utilisateur ne sait pas s'il peut éteindre son téléphone ni rendre l'appareil à un collègue.</p>
+
+<h2 id="les-pieges-a-eviter">Les pièges à éviter</h2>
+<ul>
+  <li><strong>Calculer les montants sur le téléphone.</strong> L'appareil propose, le serveur décide et recalcule.</li>
+  <li><strong>Garder un jeton sans durée de vie.</strong> Un appareil perdu ne doit pas rester une porte ouverte : jetons courts, appareils autorisés un par un.</li>
+  <li><strong>Synchroniser dans le désordre.</strong> Une modification envoyée avant la création qu'elle concerne échouera.</li>
+  <li><strong>Oublier les données de référence.</strong> Barèmes et listes doivent être téléchargés avant le départ sur le terrain.</li>
+</ul>
+<p>Ce schéma demande un peu plus de travail au départ. En échange, l'application reste utilisable partout, et aucune saisie ne dépend de la qualité du réseau.</p>
+
+      </div>
+      <footer class="article__footer">
+        <div><h2 class="article__footer-title">Sujets</h2><ul class="tag-list"><li><a class="tag" href="/blog/?tags=flutter">Flutter</a></li><li><a class="tag" href="/blog/?tags=dart">Dart</a></li><li><a class="tag" href="/blog/?tags=sqlite">SQLite</a></li><li><a class="tag" href="/blog/?tags=api">API</a></li></ul></div>
+        <div class="share" data-share data-share-title="Flutter hors ligne : synchroniser sans perdre de données" data-share-text="Sur le terrain, le réseau va et vient. Une application mobile fiable enregistre d&#39;abord sur l&#39;appareil, puis synchronise sans créer de doublon. Voici le schéma que j&#39;utilise.">
+    <h2 class="share__title">Partager cet article</h2>
+    <div class="share__actions">
+      <button type="button" class="btn btn--sm" data-share-native hidden><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#share"/></svg>Partager</button>
+      <button type="button" class="btn btn--ghost btn--sm" data-share-copy><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#copy"/></svg><span>Copier le lien</span></button>
+      <a class="btn btn--ghost btn--sm" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fardynganga.github.io%2Fblog%2Fflutter-hors-ligne-synchronisation%2F" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn btn--ghost btn--sm" href="https://wa.me/?text=Flutter%20hors%20ligne%20%3A%20synchroniser%20sans%20perdre%20de%20donn%C3%A9es%20https%3A%2F%2Fardynganga.github.io%2Fblog%2Fflutter-hors-ligne-synchronisation%2F" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="btn btn--ghost btn--sm" href="https://twitter.com/intent/tweet?text=Flutter%20hors%20ligne%20%3A%20synchroniser%20sans%20perdre%20de%20donn%C3%A9es&amp;url=https%3A%2F%2Fardynganga.github.io%2Fblog%2Fflutter-hors-ligne-synchronisation%2F" target="_blank" rel="noopener noreferrer">X</a>
+    </div>
+    <p class="share__status visually-hidden" role="status" aria-live="polite"></p>
+  </div>
+      </footer>
+    </div>
+  </div>
+
+  <nav class="wrap article-nav" aria-label="Navigation entre les articles">
+    <a class="article-nav__link article-nav__link--older" href="/blog/tester-la-securite-d-une-api-rest/" rel="prev">
+      <span class="article-nav__label"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-left"/></svg>Article précédent</span>
+      <span class="article-nav__title">Tester la sécurité d&#39;une API REST : par où commencer ?</span>
+    </a>
+    <a class="article-nav__link article-nav__link--newer" href="/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant/" rel="next">
+      <span class="article-nav__label">Article suivant<svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+      <span class="article-nav__title">Serveur MCP : connecter une IA à un système existant</span>
+    </a>
+  </nav>
+</article>
+<section class="section section--alt" aria-labelledby="similaires-title">
+  <div class="wrap">
+    <div class="section__head"><h2 id="similaires-title">Articles similaires</h2></div>
+    <div class="post-grid"><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/tester-la-securite-d-une-api-rest.jpg" alt="Le mot « API » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Pentest</p>
+      <h3 class="post-card__title"><a href="/blog/tester-la-securite-d-une-api-rest/">Tester la sécurité d&#39;une API REST : par où commencer ?</a></h3>
+      <p class="post-card__excerpt">Une API expose directement vos données et vos règles métier. Voici la démarche que je suis pour l&#39;évaluer, du périmètre autorisé jusqu&#39;au rapport.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>4 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant.jpg" alt="Le sigle « MCP » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Intelligence artificielle</p>
+      <h3 class="post-card__title"><a href="/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant/">Serveur MCP : connecter une IA à un système existant</a></h3>
+      <p class="post-card__excerpt">Le protocole MCP permet à un assistant IA d&#39;interroger vos outils et vos données sans réécrire votre système. Principe, exemple en Python et précautions de sécurité.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>3 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/securiser-une-application-django.jpg" alt="Le mot « Django » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Cybersécurité</p>
+      <h3 class="post-card__title"><a href="/blog/securiser-une-application-django/">Comment sécuriser une application Django ?</a></h3>
+      <p class="post-card__excerpt">Django protège beaucoup de choses par défaut, mais pas tout. Voici les réglages et les réflexes qui font la différence entre une application en ligne et une application défendue.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>3 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article></div>
+  </div>
+</section>
+  </main>
+  <!-- @include footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+            <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+            <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+          </a>
+          <p class="site-footer__pitch">Ardy Nganga conçoit des applications Web, Mobile et Desktop, et teste leur sécurité avant qu'un attaquant ne le fasse.</p>
+        </div>
+        <nav aria-labelledby="pied-navigation">
+          <h2 class="site-footer__title" id="pied-navigation">Le site</h2>
+          <ul class="site-footer__list">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#realisations">Réalisations</a></li>
+            <li><a href="/pentest/">Tests d'intrusion</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#a-propos">À propos</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="site-footer__title">Contact</h2>
+          <ul class="site-footer__list">
+            <li><a href="mailto:ardyngangadev@gmail.com"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg>ardyngangadev@gmail.com</a></li>
+            <li><a href="https://wa.me/243840445627" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg>WhatsApp : +243 84 044 5627</a></li>
+            <li><a href="https://github.com/Ardynganga" target="_blank" rel="noopener noreferrer me"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#github"/></svg>GitHub</a></li>
+            
+            <li><a href="/blog/feed.xml"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#rss"/></svg>Flux RSS du blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span data-year>2026</span> Ardy Nganga · Kinshasa, RDC</p>
+        <a class="to-top" href="#contenu"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-up"/></svg>Haut de page</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="/assets/js/core/app.js"></script>
+  <!-- @end footer -->
+  <script type="module" src="/assets/js/blog/article.js"></script>
+</body>
+</html>

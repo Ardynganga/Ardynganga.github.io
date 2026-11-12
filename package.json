@@ -1,0 +1,11 @@
+{
+  "name": "ardynganga.github.io",
+  "private": true,
+  "type": "module",
+  "description": "Portfolio et blog d'Ardy Nganga — site statique pour GitHub Pages.",
+  "scripts": {
+    "build": "node tools/build.js",
+    "test": "node --test tools/tests/*.test.js",
+    "serve": "python3 -m http.server 8080"
+  }
+}

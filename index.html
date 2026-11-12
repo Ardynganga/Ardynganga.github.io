@@ -1,466 +1,458 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ardy Nganga Dev — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ardy Nganga — Développeur Web, Mobile et pentester à Kinshasa</title>
+  <meta name="description" content="Ardy Nganga conçoit des applications Web, Mobile et Desktop, des API et des systèmes d'information, puis teste leur sécurité. Développement, pentest et intégration de l'IA à Kinshasa.">
+  <meta name="author" content="Ardy Nganga">
+  <link rel="canonical" href="https://ardynganga.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ardy Nganga">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Ardy Nganga — Développeur Web, Mobile et pentester">
+  <meta property="og:description" content="Des applications conçues pour durer, testées pour résister. Développement logiciel, tests d'intrusion et intégration de l'IA.">
+  <meta property="og:url" content="https://ardynganga.github.io/">
+  <meta property="og:image" content="https://ardynganga.github.io/assets/brand/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logo Nganga : Web, Mobile, Pentest">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ardy Nganga — Développeur Web, Mobile et pentester">
+  <meta name="twitter:description" content="Des applications conçues pour durer, testées pour résister.">
+  <meta name="twitter:image" content="https://ardynganga.github.io/assets/brand/og-default.png">
+  <!-- @include head -->
+  <meta name="theme-color" content="#460201">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Blog — Ardy Nganga" href="/blog/feed.xml">
+  <link rel="preload" href="/assets/fonts/cabin-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>
+    /* Applique le thème choisi (ou celui du système) avant le premier affichage. */
+    (function () {
+      try {
+        var theme = localStorage.getItem("theme");
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+      } catch (error) { /* stockage indisponible : la feuille de style suit le système */ }
+    })();
+  </script>
+  <!-- @end head -->
+  <link rel="stylesheet" href="/assets/css/home.css">
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://ardynganga.github.io/#ardy-nganga",
+      "name": "Ardy Nganga",
+      "alternateName": "AnDev",
+      "url": "https://ardynganga.github.io/",
+      "image": "https://ardynganga.github.io/assets/images/ardy-nganga-640.jpg",
+      "jobTitle": "Développeur Web, Mobile et Desktop, pentester",
+      "email": "mailto:ardyngangadev@gmail.com",
+      "telephone": "+243840445627",
+      "address": { "@type": "PostalAddress", "addressLocality": "Kinshasa", "addressCountry": "CD" },
+      "knowsAbout": ["Python", "Django", "JavaScript", "Flutter", "API REST", "Tests d'intrusion", "Sécurité des applications Web", "Model Context Protocol"],
+      "sameAs": ["https://github.com/Ardynganga"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Ardy Nganga",
+      "url": "https://ardynganga.github.io/",
+      "inLanguage": "fr",
+      "author": { "@id": "https://ardynganga.github.io/#ardy-nganga" }
+    }
+  ]
+  </script>
 </head>
 <body>
-
-  <!-- ── CURSOR ── -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-dot" id="cursorDot"></div>
-
-  <!-- ── LOADER ── -->
-  <div class="loader" id="loader">
-    <div class="loader-inner">
-      <span class="loader-text">AnDev</span>
-      <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+  <!-- @include header -->
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+        <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+        <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+      </a>
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu">
+        <svg class="icon icon--menu" aria-hidden="true"><use href="/assets/icons.svg#menu"/></svg>
+        <svg class="icon icon--close" aria-hidden="true"><use href="/assets/icons.svg#close"/></svg>
+      </button>
+      <nav class="site-nav" id="menu-principal" aria-label="Navigation principale">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/#services" data-nav="services">Services</a></li>
+          <li><a class="site-nav__link" href="/#realisations" data-nav="realisations">Réalisations</a></li>
+          <li><a class="site-nav__link" href="/pentest/" data-nav="pentest">Pentest</a></li>
+          <li><a class="site-nav__link" href="/blog/" data-nav="blog">Blog</a></li>
+          <li><a class="site-nav__link" href="/#a-propos" data-nav="a-propos">À propos</a></li>
+        </ul>
+        <a class="btn btn--sm site-nav__cta" href="/#contact">Me contacter</a>
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Passer au thème sombre">
+          <svg class="icon icon--to-dark" aria-hidden="true"><use href="/assets/icons.svg#moon"/></svg>
+          <svg class="icon icon--to-light" aria-hidden="true"><use href="/assets/icons.svg#sun"/></svg>
+        </button>
+      </nav>
     </div>
-  </div>
+  </header>
+  <!-- @end header -->
 
-  <!-- ── NAVBAR ── -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-logo">An<span>Dev</span></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#hero" class="nav-link active" data-section="hero">Accueil</a></li>
-      <li><a href="#about" class="nav-link" data-section="about">À propos</a></li>
-      <li><a href="#skills" class="nav-link" data-section="skills">Compétences</a></li>
-      <li><a href="#projects" class="nav-link" data-section="projects">Projets</a></li>
-      <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Me contacter</a>
-    <button class="burger" id="burger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  <main id="contenu" tabindex="-1">
 
-  <!-- ── HERO ── -->
-  <section class="hero" id="hero">
-    <canvas class="hero-canvas" id="heroCanvas"></canvas>
-    <div class="hero-grid-lines"></div>
+    <!-- Accueil ---------------------------------------------------------- -->
+    <section class="hero band-ox" aria-labelledby="hero-title">
+      <svg class="hero__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false">
+        <path class="hero__piece hero__piece--left" d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7Z"/>
+        <path class="hero__piece hero__piece--right" d="M105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/>
+        <path class="hero__bolt" d="M92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L44.5 79.2L63.4 47.8L72.4 61.7L103 11.7Z"/>
+      </svg>
 
-    <div class="hero-content">
-      <div class="hero-badge reveal">
-        <span class="badge-dot"></span>
-        Disponible pour des missions freelance
-      </div>
-
-      <h1 class="hero-title reveal">
-        <span class="line">Ardy Nganga</span>
-        <span class="line accent-line">Dev</span>
-      </h1>
-
-      <p class="hero-subtitle reveal">
-        Développeur Web &amp; Mobile Fullstack · DRC
-      </p>
-
-      <p class="hero-desc reveal">
-        Je conçois des expériences numériques modernes et performantes — du backend robuste avec <em>Django</em> aux applications mobiles fluides avec <em>Flutter</em>.
-      </p>
-
-      <div class="hero-actions reveal">
-        <a href="#projects" class="btn btn-primary">
-          <span>Voir mes projets</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
-        <a href="#contact" class="btn btn-ghost">
-          <span>Me contacter</span>
-        </a>
-      </div>
-
-      <div class="hero-stats reveal">
-        <div class="stat">
-          <span class="stat-num" data-target="3">0</span><span>+</span>
-          <p>Ans d'expérience</p>
-        </div>
-        <div class="stat-sep"></div>
-        <div class="stat">
-          <span class="stat-num" data-target="25">0</span><span>+</span>
-          <p>Projets livrés</p>
-        </div>
-        <div class="stat-sep"></div>
-        <div class="stat">
-          <span class="stat-num" data-target="15">0</span><span>+</span>
-          <p>Clients satisfaits</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-photo-wrap reveal">
-      <div class="photo-ring ring-1"></div>
-      <div class="photo-ring ring-2"></div>
-      <div class="photo-ring ring-3"></div>
-      <div class="photo-glow"></div>
-      <img src="profile.png" alt="Ardy Nganga Dev" class="hero-photo" />
-      <div class="photo-badge-float">
-        <i class="fa-brands fa-python"></i>
-      </div>
-      <div class="photo-badge-float float-2">
-        <i class="fa-brands fa-flutter" style="font-family: 'Font Awesome 6 Brands'">F</i>
-      </div>
-    </div>
-
-    <div class="hero-scroll-hint">
-      <span>Défiler</span>
-      <div class="scroll-arrow">
-        <i class="fa-solid fa-chevron-down"></i>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── ABOUT ── -->
-  <section class="section about" id="about">
-    <div class="section-bg-label">À PROPOS</div>
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Qui suis-je ?</span>
-        <h2 class="section-title">Passionné par le code,<br /><span>obsédé par les détails</span></h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p>
-            Je suis <strong>Ardy Nganga</strong>, développeur freelance basé à Kinshasa, République Démocratique du Congo. Mon pseudo dans l'univers du dev : <strong>AnDev</strong>.
-          </p>
-          <p>
-            Je construis des applications web et mobiles robustes, en combinant une logique backend solide avec des interfaces utilisateur élégantes. Chaque projet est une opportunité de pousser les limites de ce que le code peut créer.
-          </p>
-          <p>
-            Mon approche : comprendre d'abord le besoin métier, puis livrer une solution technique propre, scalable et maintenable — dans les délais convenus.
-          </p>
-          <div class="about-links">
-            <a href="mailto:ardyngangadev@gmail.com" class="about-link">
-              <i class="fa-solid fa-envelope"></i> ardyngangadev@gmail.com
+      <div class="wrap hero__inner">
+        <div class="hero__content">
+          <p class="hero__who">Ardy Nganga, développeur et pentester à Kinshasa</p>
+          <h1 id="hero-title">Des applications conçues pour durer, testées pour résister.</h1>
+          <p class="hero__lead">Je conçois vos applications Web, Mobile et Desktop, vos API et vos systèmes d'information. Puis j'évalue leur sécurité, avant qu'un attaquant ne s'en charge.</p>
+          <div class="hero__actions">
+            <a class="btn" href="#realisations">Voir mes réalisations</a>
+            <a class="btn btn--ghost" href="#contact">Me contacter</a>
+            <a class="link-arrow hero__cv" href="#" data-cv hidden download>
+              <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#download"/></svg>Télécharger mon CV
             </a>
-            <a href="tel:+243840445627" class="about-link">
-              <i class="fa-solid fa-phone"></i> +243 84 044 5627
+          </div>
+          <p class="hero__status"><span class="hero__dot" aria-hidden="true"></span>Disponible pour des missions freelance</p>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <ul class="hero__domains" aria-label="Domaines d'expertise">
+          <li>
+            <a class="hero-domain" href="#developpement">
+              <span class="hero-domain__title">Développement logiciel<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+              <span class="hero-domain__text">Applications Web, Mobile et Desktop, API et systèmes de gestion.</span>
             </a>
-            <span class="about-link">
-              <i class="fa-solid fa-location-dot"></i> Kinshasa, RDC
-            </span>
-          </div>
-        </div>
-
-        <div class="about-cards reveal">
-          <div class="info-card">
-            <div class="info-card-icon"><i class="fa-solid fa-code"></i></div>
-            <h3>Web</h3>
-            <p>HTML, CSS, JavaScript, Django — interfaces réactives et APIs puissantes.</p>
-          </div>
-          <div class="info-card">
-            <div class="info-card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-            <h3>Mobile</h3>
-            <p>Flutter &amp; Dart — applications cross-platform iOS et Android, performantes.</p>
-          </div>
-          <div class="info-card">
-            <div class="info-card-icon"><i class="fa-solid fa-server"></i></div>
-            <h3>Backend</h3>
-            <p>Python / Django REST Framework — architectures propres et sécurisées.</p>
-          </div>
-          <div class="info-card">
-            <div class="info-card-icon"><i class="fa-solid fa-handshake"></i></div>
-            <h3>Freelance</h3>
-            <p>Collaboration directe, communication claire, livraison dans les délais.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SKILLS ── -->
-  <section class="section skills" id="skills">
-    <div class="section-bg-label">SKILLS</div>
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Technologies</span>
-        <h2 class="section-title">Mon stack<br /><span>technique</span></h2>
-      </div>
-
-      <div class="skills-grid">
-        <!-- Backend -->
-        <div class="skill-group reveal">
-          <h3 class="skill-group-title"><i class="fa-brands fa-python"></i> Backend</h3>
-          <div class="skill-items">
-            <div class="skill-item" data-level="90">
-              <div class="skill-info"><span>Python</span><span class="skill-pct">90%</span></div>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div>
-            </div>
-            <div class="skill-item" data-level="85">
-              <div class="skill-info"><span>Django</span><span class="skill-pct">85%</span></div>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:85%"></div></div>
-            </div>
-            <div class="skill-item" data-level="80">
-              <div class="skill-info"><span>Django REST API</span><span class="skill-pct">80%</span></div>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile -->
-        <div class="skill-group reveal">
-          <h3 class="skill-group-title"><i class="fa-solid fa-mobile-screen"></i> Mobile</h3>
-          <div class="skill-items">
-            <div class="skill-item" data-level="88">
-              <div class="skill-info"><span>Flutter</span><span class="skill-pct">88%</span></div>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:88%"></div></div>
-            </div>
-            <div class="skill-item" data-level="85">
-              <div class="skill-info"><span>Dart</span><span class="skill-pct">85%</span></div>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:85%"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Frontend -->
-        <div class="skill-group reveal">
-          <h3 class="skill-group-title"><i class="fa-brands fa-html5"></i> Frontend Web</h3>
-          <div class="skill-items">
-            <div class="skill-item" data-level="92">
-              <div class="skill-info"><span>HTML5</span><span class="skill-pct">92%</span></div>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:92%"></div></div>
-            </div>
-            <div class="skill-item" data-level="88">
-              <div class="skill-info"><span>CSS3</span><span class="skill-pct">88%</span></div>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:88%"></div></div>
-            </div>
-            <div class="skill-item" data-level="80">
-              <div class="skill-info"><span>JavaScript</span><span class="skill-pct">80%</span></div>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tools -->
-        <div class="skill-group reveal">
-          <h3 class="skill-group-title"><i class="fa-solid fa-screwdriver-wrench"></i> Outils</h3>
-          <div class="skill-tech-pills">
-            <span class="pill">Git / GitHub</span>
-            <span class="pill">PostgreSQL</span>
-            <span class="pill">SQLite</span>
-            <span class="pill">REST API</span>
-            <span class="pill">VS Code</span>
-            <span class="pill">Figma</span>
-            <span class="pill">Linux</span>
-            <span class="pill">Docker</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── PROJECTS ── -->
-  <section class="section projects" id="projects">
-    <div class="section-bg-label">PROJETS</div>
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Portfolio</span>
-        <h2 class="section-title">Projets<br /><span>récents</span></h2>
-      </div>
-
-      <div class="projects-grid">
-
-        <div class="project-card reveal" data-tag="Web · Django">
-          <div class="project-img-wrap">
-            <div class="project-img" style="--hue:210">
-              <div class="project-mockup">
-                <div class="pm-bar"></div>
-                <div class="pm-content">
-                  <div class="pm-line w80"></div>
-                  <div class="pm-line w60"></div>
-                  <div class="pm-block"></div>
-                </div>
-              </div>
-            </div>
-            <div class="project-overlay">
-              <a href="#" class="project-demo-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">Web · Django</span>
-            <h3>Plateforme E-commerce</h3>
-            <p>Application e-commerce complète avec gestion des produits, panier, paiement et tableau de bord admin.</p>
-            <div class="project-techs">
-              <span>Django</span><span>Python</span><span>PostgreSQL</span><span>JS</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card reveal" data-tag="Mobile · Flutter">
-          <div class="project-img-wrap">
-            <div class="project-img" style="--hue:190">
-              <div class="project-mockup mobile">
-                <div class="pm-phone">
-                  <div class="pm-screen">
-                    <div class="pm-line w70"></div>
-                    <div class="pm-line w50"></div>
-                    <div class="pm-block sm"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project-overlay">
-              <a href="#" class="project-demo-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">Mobile · Flutter</span>
-            <h3>App de livraison</h3>
-            <p>Application mobile de livraison de repas avec tracking en temps réel, notifications push et paiement intégré.</p>
-            <div class="project-techs">
-              <span>Flutter</span><span>Dart</span><span>Firebase</span><span>REST API</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card reveal" data-tag="Web · API">
-          <div class="project-img-wrap">
-            <div class="project-img" style="--hue:230">
-              <div class="project-mockup">
-                <div class="pm-bar"></div>
-                <div class="pm-content">
-                  <div class="pm-line w90"></div>
-                  <div class="pm-line w55"></div>
-                  <div class="pm-block"></div>
-                </div>
-              </div>
-            </div>
-            <div class="project-overlay">
-              <a href="#" class="project-demo-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">API · Django REST</span>
-            <h3>API de gestion scolaire</h3>
-            <p>Backend REST API pour la gestion des élèves, notes, emplois du temps et bulletins scolaires.</p>
-            <div class="project-techs">
-              <span>DRF</span><span>Python</span><span>SQLite</span><span>JWT</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card reveal" data-tag="Mobile · Flutter">
-          <div class="project-img-wrap">
-            <div class="project-img" style="--hue:160">
-              <div class="project-mockup mobile">
-                <div class="pm-phone">
-                  <div class="pm-screen">
-                    <div class="pm-line w60"></div>
-                    <div class="pm-line w80"></div>
-                    <div class="pm-block sm"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project-overlay">
-              <a href="#" class="project-demo-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">Mobile · Flutter</span>
-            <h3>App Finance Perso</h3>
-            <p>Suivi des dépenses, revenus et budgets avec graphiques analytiques et alertes personnalisables.</p>
-            <div class="project-techs">
-              <span>Flutter</span><span>Dart</span><span>SQLite</span><span>Charts</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CONTACT ── -->
-  <section class="section contact" id="contact">
-    <div class="section-bg-label">CONTACT</div>
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Travaillons ensemble</span>
-        <h2 class="section-title">Démarrons votre<br /><span>prochain projet</span></h2>
-      </div>
-
-      <div class="contact-wrap">
-        <div class="contact-info reveal">
-          <h3>Prenez contact</h3>
-          <p>Disponible pour des missions freelance, des projets à long terme ou simplement une discussion autour d'une idée.</p>
-
-          <div class="contact-items">
-            <a href="mailto:ardyngangadev@gmail.com" class="contact-item">
-              <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
-              <div>
-                <span class="ci-label">Email</span>
-                <span class="ci-val">ardyngangadev@gmail.com</span>
-              </div>
+          </li>
+          <li>
+            <a class="hero-domain" href="#cybersecurite">
+              <span class="hero-domain__title">Cybersécurité et pentest<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+              <span class="hero-domain__text">Tests d'intrusion, audits de sécurité et recommandations.</span>
             </a>
-            <a href="tel:+243840445627" class="contact-item">
-              <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
-              <div>
-                <span class="ci-label">Téléphone / WhatsApp</span>
-                <span class="ci-val">+243 84 044 5627</span>
-              </div>
+          </li>
+          <li>
+            <a class="hero-domain" href="#solutions-intelligentes">
+              <span class="hero-domain__title">Solutions intelligentes<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+              <span class="hero-domain__text">Agents IA, serveurs MCP et automatisation des processus.</span>
             </a>
-            <span class="contact-item">
-              <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
-              <div>
-                <span class="ci-label">Localisation</span>
-                <span class="ci-val">Kinshasa, RDC</span>
-              </div>
-            </span>
-          </div>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-          <div class="social-links">
-            <a href="https://github.com" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://wa.me/243840445627" target="_blank" class="social-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://twitter.com" target="_blank" class="social-btn" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    <!-- Services --------------------------------------------------------- -->
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 id="services-title">Ce que je peux faire pour vous</h2>
+          <p class="section__lead">Concevoir, sécuriser, automatiser : trois expertises qui se renforcent. Une application bien conçue se défend mieux, et un regard d'attaquant rend le code plus solide.</p>
+        </div>
+
+        <article class="domain" id="developpement" aria-labelledby="developpement-title">
+          <div class="domain__intro">
+            <svg class="domain__glyph" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <path d="M12 52 26 28" /><path d="M26 52 46 18" /><path d="M42 52 58 25" />
+            </svg>
+            <h3 id="developpement-title">Développement logiciel</h3>
+            <p>Des applications pensées pour votre métier, du cahier des charges à la mise en production : fiables, maintenables et prêtes à évoluer.</p>
+            <div class="domain__actions">
+              <a class="btn" href="#contact" data-subject="Projet de développement logiciel">Parler de mon projet</a>
+              <a class="link-arrow" href="#realisations">Voir les réalisations<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg></a>
+            </div>
+          </div>
+          <ul class="domain__list">
+            <li><strong>Applications Web</strong><span>Sites, plateformes et outils de gestion, avec Django et JavaScript.</span></li>
+            <li><strong>Applications Mobile</strong><span>Android et iOS avec Flutter, y compris pour un usage hors ligne.</span></li>
+            <li><strong>Applications Desktop</strong><span>Logiciels de bureau pour vos postes de travail.</span></li>
+            <li><strong>API et intégrations</strong><span>API REST documentées, prêtes pour le web et le mobile.</span></li>
+            <li><strong>Systèmes d'information</strong><span>Analyse du besoin, modélisation et outils de gestion sur mesure.</span></li>
+            <li><strong>Architecture backend et bases de données</strong><span>Modèles de données, performances et déploiement.</span></li>
+          </ul>
+        </article>
+
+        <article class="domain" id="cybersecurite" aria-labelledby="cybersecurite-title">
+          <div class="domain__intro">
+            <svg class="domain__glyph" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <path d="M14 52 30 25" /><path d="M36 52 54 21" /><path class="domain__glyph-bolt" d="M40 12 30 30l6 3-9 17" />
+            </svg>
+            <h3 id="cybersecurite-title">Cybersécurité et pentest</h3>
+            <p>Je cherche les failles de vos applications comme le ferait un attaquant, dans un cadre autorisé, puis je vous aide à les corriger.</p>
+            <div class="domain__actions">
+              <a class="btn" href="#contact" data-subject="Demande d'évaluation de sécurité">Demander une évaluation</a>
+              <a class="link-arrow" href="/pentest/">Voir la méthode de test<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg></a>
+            </div>
+          </div>
+          <ul class="domain__list">
+            <li><strong>Tests d'intrusion</strong><span>Applications Web et API, toujours avec l'autorisation écrite du propriétaire.</span></li>
+            <li><strong>Audit de sécurité des applications Web</strong><span>Configuration, sessions, contrôle d'accès, données exposées.</span></li>
+            <li><strong>Tests de sécurité des API REST</strong><span>Authentification, autorisations et champs acceptés par le serveur.</span></li>
+            <li><strong>Analyse des vulnérabilités</strong><span>Recherche, validation et classement par niveau de criticité.</span></li>
+            <li><strong>Évaluation des systèmes d'information</strong><span>Un état des lieux de la sécurité de vos outils.</span></li>
+            <li><strong>Recommandations et accompagnement</strong><span>Corrections priorisées, puis contre-vérification.</span></li>
+          </ul>
+        </article>
+
+        <article class="domain" id="solutions-intelligentes" aria-labelledby="ia-title">
+          <div class="domain__intro">
+            <svg class="domain__glyph" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <path d="M14 52 34 18" /><path class="domain__glyph-thin" d="M34 18 52 26M24 35l26 11M52 26l-2 20" /><circle cx="52" cy="26" r="4" /><circle cx="50" cy="46" r="4" />
+            </svg>
+            <h3 id="ia-title">Solutions intelligentes et agents IA</h3>
+            <p>J'ajoute de l'intelligence à vos outils existants, sans tout reconstruire : l'IA travaille avec vos données, sous votre contrôle.</p>
+            <div class="domain__actions">
+              <a class="btn" href="#contact" data-subject="Intégration de l'IA dans un système existant">Étudier mon cas d'usage</a>
+              <a class="link-arrow" href="/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant/">Lire : connecter une IA à l'existant<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg></a>
+            </div>
+          </div>
+          <ul class="domain__list">
+            <li><strong>Développement d'agents IA</strong><span>Des assistants qui exécutent des tâches dans vos outils.</span></li>
+            <li><strong>Intégration de l'IA à l'existant</strong><span>Dans les applications et systèmes déjà en service.</span></li>
+            <li><strong>Serveurs MCP</strong><span>Pour relier un assistant IA à votre système d'information.</span></li>
+            <li><strong>Automatisation des processus métier</strong><span>Tâches répétitives, rapports et traitement de documents.</span></li>
+            <li><strong>Optimisation des processus</strong><span>Repérer ce qui peut être simplifié ou accéléré.</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Pentest : méthode ------------------------------------------------ -->
+    <section class="section band-ox method-band" aria-labelledby="methode-title">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 id="methode-title">Votre application résisterait-elle à une attaque ?</h2>
+          <p class="section__lead">Un test d'intrusion répond à cette question avec des preuves, dans un cadre légal et autorisé. Il suit toujours les mêmes sept étapes.</p>
+        </div>
+        <ol class="method-steps">
+          <li>Périmètre et autorisation</li>
+          <li>Reconnaissance</li>
+          <li>Surfaces d'attaque</li>
+          <li>Validation des vulnérabilités</li>
+          <li>Évaluation des risques</li>
+          <li>Rapport technique</li>
+          <li>Remédiation</li>
+        </ol>
+        <div class="method-band__actions">
+          <a class="btn" href="/pentest/">Découvrir la méthode</a>
+          <a class="btn btn--ghost" href="#contact" data-subject="Demande d'évaluation de sécurité">Demander une évaluation de sécurité</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Réalisations ----------------------------------------------------- -->
+    <section class="section" id="realisations" aria-labelledby="realisations-title">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 id="realisations-title">Réalisations</h2>
+          <p class="section__lead">Des projets concrets dans la fiscalité locale, le commerce en ligne, l'événementiel et la santé.</p>
+        </div>
+        <div class="projects" data-projects>
+          <div class="projects__toolbar">
+            <div class="chip-row" role="group" aria-label="Filtrer les réalisations par catégorie" data-project-filters></div>
+            <p class="projects__count" role="status" aria-live="polite" data-project-count></p>
+          </div>
+          <div class="project-grid" data-project-grid></div>
+          <noscript><p class="notice">La liste des réalisations s'affiche avec JavaScript. Écrivez-moi à <a href="mailto:ardyngangadev@gmail.com">ardyngangadev@gmail.com</a> pour recevoir une présentation.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- À propos --------------------------------------------------------- -->
+    <section class="section section--alt" id="a-propos" aria-labelledby="a-propos-title">
+      <div class="wrap">
+        <div class="about">
+          <div class="about__photo">
+            <picture>
+              <source type="image/webp" srcset="/assets/images/ardy-nganga-320.webp 320w, /assets/images/ardy-nganga-640.webp 640w" sizes="(min-width: 62rem) 24rem, 60vw">
+              <img src="/assets/images/ardy-nganga-640.jpg" alt="Portrait d'Ardy Nganga" width="640" height="800" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="about__text">
+            <h2 id="a-propos-title">Un développeur qui pense aussi comme un attaquant</h2>
+            <p class="section__lead">Je suis Ardy Nganga, développeur basé à Kinshasa, en République démocratique du Congo. Dans la communauté, on me connaît aussi sous le nom d'AnDev.</p>
+            <p>Formé en génie logiciel, je conçois des solutions numériques de bout en bout : plateformes web avec Python et Django, interfaces en JavaScript, applications mobiles avec Flutter. J'ai travaillé sur des systèmes de gestion de recettes publiques, de soins de santé, de commerce en ligne et de billetterie.</p>
+            <p>Ma formation en cybersécurité a changé ma façon de développer : devant chaque fonctionnalité, je me demande comment elle pourrait être détournée.</p>
+            <p>Mon approche tient en deux temps. Comprendre d'abord le besoin métier. Livrer ensuite une solution fiable et maintenable, dans les délais convenus.</p>
           </div>
         </div>
 
-        <form class="contact-form reveal" id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Nom complet</label>
-              <input type="text" id="name" name="name" placeholder="Votre nom" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="votre@email.com" required />
-            </div>
+        <div class="career">
+          <div class="career__col">
+            <h3>Expériences</h3>
+            <ul class="career__list">
+              <li>
+                <h4>DevOps — Oxytech</h4>
+                <p class="career__place">Entreprise de développement informatique, Kinshasa</p>
+                <p>E-collect, système de gestion des recettes de la province du Maniema. Idoxy, système de gestion des soins de santé pour les hôpitaux généraux de référence du Kongo Central.</p>
+              </li>
+              <li>
+                <h4>Développeur indépendant</h4>
+                <p class="career__place">Kinshasa</p>
+                <p>Applications web, mobiles et API pour des entreprises, dont la plateforme e-commerce de Groupe Lift S.A.R.L.</p>
+              </li>
+            </ul>
           </div>
-          <div class="form-group">
-            <label for="subject">Sujet</label>
-            <input type="text" id="subject" name="subject" placeholder="Objet de votre message" required />
+          <div class="career__col">
+            <h3>Formation</h3>
+            <ul class="career__list">
+              <li>
+                <h4>Génie logiciel</h4>
+                <p>Études en génie logiciel.</p>
+              </li>
+              <li>
+                <h4>Cybersécurité</h4>
+                <p>Formation en cybersécurité, sanctionnée par une certification Google.</p>
+              </li>
+            </ul>
           </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet..." required></textarea>
+          <div class="career__col">
+            <h3>Technologies</h3>
+            <dl class="stack">
+              <div><dt>Backend</dt><dd>Python, Django, Django REST Framework</dd></div>
+              <div><dt>Mobile</dt><dd>Flutter, Dart</dd></div>
+              <div><dt>Web</dt><dd>HTML, CSS, JavaScript</dd></div>
+              <div><dt>Données et outils</dt><dd>PostgreSQL, SQLite, API REST, Git et GitHub, Docker, Linux, Figma</dd></div>
+            </dl>
           </div>
-          <button type="submit" class="btn btn-primary btn-full">
-            <span>Envoyer le message</span>
-            <i class="fa-solid fa-paper-plane"></i>
-          </button>
-          <div class="form-success" id="formSuccess">
-            <i class="fa-solid fa-circle-check"></i> Message envoyé avec succès !
-          </div>
-        </form>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── FOOTER ── -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-logo">An<span>Dev</span></div>
-      <p class="footer-copy">© 2025 Ardy Nganga Dev · Kinshasa, RDC · Tous droits réservés</p>
-      <div class="footer-top-btn" id="backTop">
-        <i class="fa-solid fa-arrow-up"></i>
+    <!-- Blog ------------------------------------------------------------- -->
+    <section class="section" id="articles" aria-labelledby="articles-title" data-latest-posts hidden>
+      <div class="wrap">
+        <div class="section__head section__head--row">
+          <div>
+            <h2 id="articles-title">Derniers articles</h2>
+            <p class="section__lead">Guides pratiques sur le développement, la sécurité et l'intégration de l'IA.</p>
+          </div>
+          <a class="link-arrow" href="/blog/">Tous les articles<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg></a>
+        </div>
+        <div class="post-grid" data-latest-posts-grid></div>
+      </div>
+    </section>
+
+    <!-- Contact ---------------------------------------------------------- -->
+    <section class="section section--alt" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="contact">
+          <div class="contact__intro">
+            <h2 id="contact-title">Parlons de votre projet</h2>
+            <p class="section__lead">Une application à créer, un système à sécuriser, un processus à automatiser ? Décrivez votre besoin en quelques lignes.</p>
+            <ul class="contact__list">
+              <li>
+                <a href="mailto:ardyngangadev@gmail.com"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg><span><span class="contact__label">E-mail</span>ardyngangadev@gmail.com</span></a>
+              </li>
+              <li>
+                <a href="https://wa.me/243840445627" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg><span><span class="contact__label">WhatsApp et téléphone</span>+243 84 044 5627</span></a>
+              </li>
+              <li>
+                <a href="https://github.com/Ardynganga" target="_blank" rel="noopener noreferrer me"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#github"/></svg><span><span class="contact__label">GitHub</span>github.com/Ardynganga</span></a>
+              </li>
+              <li>
+                <span class="contact__static"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#pin"/></svg><span><span class="contact__label">Localisation</span>Kinshasa, RDC</span></span>
+              </li>
+            </ul>
+          </div>
+
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="contact-form__row">
+              <div class="field">
+                <label for="contact-name">Nom complet</label>
+                <input class="input" id="contact-name" name="name" type="text" autocomplete="name" required>
+                <p class="field__error" id="contact-name-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="contact-email">Adresse e-mail</label>
+                <input class="input" id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+                <p class="field__error" id="contact-email-error" hidden></p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="contact-subject">Sujet</label>
+              <input class="input" id="contact-subject" name="subject" type="text" list="contact-subjects" required>
+              <datalist id="contact-subjects">
+                <option value="Projet de développement logiciel"></option>
+                <option value="Demande d'évaluation de sécurité"></option>
+                <option value="Intégration de l'IA dans un système existant"></option>
+                <option value="Autre demande"></option>
+              </datalist>
+              <p class="field__error" id="contact-subject-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="contact-message">Votre besoin</label>
+              <textarea class="input" id="contact-message" name="message" rows="6" required aria-describedby="contact-message-hint"></textarea>
+              <p class="field__hint" id="contact-message-hint">Contexte, objectif et délai souhaité suffisent pour démarrer.</p>
+              <p class="field__error" id="contact-message-error" hidden></p>
+            </div>
+            <div class="contact-form__actions">
+              <button class="btn" type="submit" data-send="email">Envoyer le message</button>
+              <button class="btn btn--ghost" type="button" data-send="whatsapp">Envoyer par WhatsApp</button>
+            </div>
+            <p class="contact-form__status" role="status" aria-live="polite" data-form-status></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="project-dialog" aria-labelledby="project-dialog-title" data-project-dialog>
+    <div class="project-dialog__inner" data-project-dialog-body></div>
+  </dialog>
+
+  <!-- @include footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+            <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+            <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+          </a>
+          <p class="site-footer__pitch">Ardy Nganga conçoit des applications Web, Mobile et Desktop, et teste leur sécurité avant qu'un attaquant ne le fasse.</p>
+        </div>
+        <nav aria-labelledby="pied-navigation">
+          <h2 class="site-footer__title" id="pied-navigation">Le site</h2>
+          <ul class="site-footer__list">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#realisations">Réalisations</a></li>
+            <li><a href="/pentest/">Tests d'intrusion</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#a-propos">À propos</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="site-footer__title">Contact</h2>
+          <ul class="site-footer__list">
+            <li><a href="mailto:ardyngangadev@gmail.com"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg>ardyngangadev@gmail.com</a></li>
+            <li><a href="https://wa.me/243840445627" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg>WhatsApp : +243 84 044 5627</a></li>
+            <li><a href="https://github.com/Ardynganga" target="_blank" rel="noopener noreferrer me"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#github"/></svg>GitHub</a></li>
+            
+            <li><a href="/blog/feed.xml"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#rss"/></svg>Flux RSS du blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span data-year>2026</span> Ardy Nganga · Kinshasa, RDC</p>
+        <a class="to-top" href="#contenu"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-up"/></svg>Haut de page</a>
       </div>
     </div>
   </footer>
-
-  <script src="script.js"></script>
+  <script type="module" src="/assets/js/core/app.js"></script>
+  <!-- @end footer -->
+  <script type="module" src="/assets/js/home/main.js"></script>
 </body>
 </html>

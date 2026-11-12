@@ -1,0 +1,38 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div>
+        <a class="logo" href="/" aria-label="{{site.brand}} — retour à l'accueil">
+          <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+          <span class="logo__text"><span class="logo__name">{{site.brand}}</span><span class="logo__tag">{{site.tagline}}</span></span>
+        </a>
+        <p class="site-footer__pitch">{{site.name}} conçoit des applications Web, Mobile et Desktop, et teste leur sécurité avant qu'un attaquant ne le fasse.</p>
+      </div>
+      <nav aria-labelledby="pied-navigation">
+        <h2 class="site-footer__title" id="pied-navigation">Le site</h2>
+        <ul class="site-footer__list">
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#realisations">Réalisations</a></li>
+          <li><a href="/pentest/">Tests d'intrusion</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#a-propos">À propos</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="site-footer__title">Contact</h2>
+        <ul class="site-footer__list">
+          <li><a href="mailto:{{site.email}}"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg>{{site.email}}</a></li>
+          <li><a href="https://wa.me/{{site.whatsapp}}" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg>WhatsApp : {{site.phoneDisplay}}</a></li>
+          <li><a href="{{site.socials.github}}" target="_blank" rel="noopener noreferrer me"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#github"/></svg>GitHub</a></li>
+          {{#if site.socials.linkedin}}<li><a href="{{site.socials.linkedin}}" target="_blank" rel="noopener noreferrer me"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#linkedin"/></svg>LinkedIn</a></li>{{/if}}
+          <li><a href="/blog/feed.xml"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#rss"/></svg>Flux RSS du blog</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <p>© <span data-year>{{year}}</span> {{site.name}} · {{site.location}}</p>
+      <a class="to-top" href="#contenu"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-up"/></svg>Haut de page</a>
+    </div>
+  </div>
+</footer>
+<script type="module" src="/assets/js/core/app.js"></script>

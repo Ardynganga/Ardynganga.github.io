@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog — Ardy Nganga</title>
+    <link>https://ardynganga.github.io/blog/</link>
+    <atom:link href="https://ardynganga.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Développement Web et Mobile, cybersécurité, tests d'intrusion et intelligence artificielle.</description>
+    <language>fr</language>
+    <item>
+      <title>Serveur MCP : connecter une IA à un système existant</title>
+      <link>https://ardynganga.github.io/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant/</link>
+      <guid isPermaLink="true">https://ardynganga.github.io/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant/</guid>
+      <pubDate>Wed, 11 Nov 2026 08:00:00 GMT</pubDate>
+      <category>Intelligence artificielle</category>
+      <description>Le protocole MCP permet à un assistant IA d&#39;interroger vos outils et vos données sans réécrire votre système. Principe, exemple en Python et précautions de sécurité.</description>
+    </item>
+    <item>
+      <title>Flutter hors ligne : synchroniser sans perdre de données</title>
+      <link>https://ardynganga.github.io/blog/flutter-hors-ligne-synchronisation/</link>
+      <guid isPermaLink="true">https://ardynganga.github.io/blog/flutter-hors-ligne-synchronisation/</guid>
+      <pubDate>Wed, 11 Nov 2026 08:00:00 GMT</pubDate>
+      <category>Flutter</category>
+      <description>Sur le terrain, le réseau va et vient. Une application mobile fiable enregistre d&#39;abord sur l&#39;appareil, puis synchronise sans créer de doublon. Voici le schéma que j&#39;utilise.</description>
+    </item>
+    <item>
+      <title>Tester la sécurité d&#39;une API REST : par où commencer ?</title>
+      <link>https://ardynganga.github.io/blog/tester-la-securite-d-une-api-rest/</link>
+      <guid isPermaLink="true">https://ardynganga.github.io/blog/tester-la-securite-d-une-api-rest/</guid>
+      <pubDate>Wed, 11 Nov 2026 08:00:00 GMT</pubDate>
+      <category>Pentest</category>
+      <description>Une API expose directement vos données et vos règles métier. Voici la démarche que je suis pour l&#39;évaluer, du périmètre autorisé jusqu&#39;au rapport.</description>
+    </item>
+    <item>
+      <title>Comment sécuriser une application Django ?</title>
+      <link>https://ardynganga.github.io/blog/securiser-une-application-django/</link>
+      <guid isPermaLink="true">https://ardynganga.github.io/blog/securiser-une-application-django/</guid>
+      <pubDate>Wed, 11 Nov 2026 08:00:00 GMT</pubDate>
+      <category>Cybersécurité</category>
+      <description>Django protège beaucoup de choses par défaut, mais pas tout. Voici les réglages et les réflexes qui font la différence entre une application en ligne et une application défendue.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Page générée par tools/build.js à partir de assets/js/data/articles.js. Ne pas modifier à la main. -->
+  <title>Serveur MCP : connecter une IA à un système existant — Ardy Nganga</title>
+  <meta name="description" content="Comprendre le Model Context Protocol, écrire un premier serveur MCP en Python au-dessus d&#39;une API existante et le sécuriser.">
+  <meta name="author" content="Ardy Nganga">
+  <meta name="keywords" content="MCP, Model Context Protocol, agent IA, Python, intégration IA">
+  <link rel="canonical" href="https://ardynganga.github.io/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Ardy Nganga">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Serveur MCP : connecter une IA à un système existant">
+  <meta property="og:description" content="Comprendre le Model Context Protocol, écrire un premier serveur MCP en Python au-dessus d&#39;une API existante et le sécuriser.">
+  <meta property="og:url" content="https://ardynganga.github.io/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant/">
+  <meta property="og:image" content="https://ardynganga.github.io/assets/images/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Le sigle « MCP » et le symbole Nganga sur fond bordeaux">
+  <meta property="article:published_time" content="2026-11-11">
+  <meta property="article:modified_time" content="2026-11-11">
+  <meta property="article:author" content="Ardy Nganga">
+  <meta property="article:section" content="Intelligence artificielle">
+  <meta property="article:tag" content="MCP">
+  <meta property="article:tag" content="IA">
+  <meta property="article:tag" content="Python">
+  <meta property="article:tag" content="Automatisation">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Serveur MCP : connecter une IA à un système existant">
+  <meta name="twitter:description" content="Comprendre le Model Context Protocol, écrire un premier serveur MCP en Python au-dessus d&#39;une API existante et le sécuriser.">
+  <meta name="twitter:image" content="https://ardynganga.github.io/assets/images/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant.jpg">
+  <!-- @include head -->
+  <meta name="theme-color" content="#460201">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Blog — Ardy Nganga" href="/blog/feed.xml">
+  <link rel="preload" href="/assets/fonts/cabin-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>
+    /* Applique le thème choisi (ou celui du système) avant le premier affichage. */
+    (function () {
+      try {
+        var theme = localStorage.getItem("theme");
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+      } catch (error) { /* stockage indisponible : la feuille de style suit le système */ }
+    })();
+  </script>
+  <!-- @end head -->
+  <link rel="stylesheet" href="/assets/css/blog.css">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"Serveur MCP : connecter une IA à un système existant","description":"Comprendre le Model Context Protocol, écrire un premier serveur MCP en Python au-dessus d'une API existante et le sécuriser.","image":["https://ardynganga.github.io/assets/images/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant.jpg"],"datePublished":"2026-11-11","dateModified":"2026-11-11","author":{"@type":"Person","name":"Ardy Nganga","url":"https://ardynganga.github.io/"},"publisher":{"@type":"Person","name":"Ardy Nganga","url":"https://ardynganga.github.io/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ardynganga.github.io/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant/"},"articleSection":"Intelligence artificielle","keywords":"MCP, Model Context Protocol, agent IA, Python, intégration IA","inLanguage":"fr","wordCount":627,"timeRequired":"PT3M"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ardynganga.github.io/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ardynganga.github.io/blog/"},{"@type":"ListItem","position":3,"name":"Serveur MCP : connecter une IA à un système existant","item":"https://ardynganga.github.io/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant/"}]}]</script>
+</head>
+<body>
+  <!-- @include header current="blog" -->
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+        <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+        <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+      </a>
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu">
+        <svg class="icon icon--menu" aria-hidden="true"><use href="/assets/icons.svg#menu"/></svg>
+        <svg class="icon icon--close" aria-hidden="true"><use href="/assets/icons.svg#close"/></svg>
+      </button>
+      <nav class="site-nav" id="menu-principal" aria-label="Navigation principale">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/#services" data-nav="services">Services</a></li>
+          <li><a class="site-nav__link" href="/#realisations" data-nav="realisations">Réalisations</a></li>
+          <li><a class="site-nav__link" href="/pentest/" data-nav="pentest">Pentest</a></li>
+          <li><a class="site-nav__link" href="/blog/" data-nav="blog" aria-current="page">Blog</a></li>
+          <li><a class="site-nav__link" href="/#a-propos" data-nav="a-propos">À propos</a></li>
+        </ul>
+        <a class="btn btn--sm site-nav__cta" href="/#contact">Me contacter</a>
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Passer au thème sombre">
+          <svg class="icon icon--to-dark" aria-hidden="true"><use href="/assets/icons.svg#moon"/></svg>
+          <svg class="icon icon--to-light" aria-hidden="true"><use href="/assets/icons.svg#sun"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <!-- @end header -->
+  <main id="contenu" tabindex="-1">
+<div class="reading-progress" aria-hidden="true"><span class="reading-progress__bar"></span></div>
+<article class="article" data-article="serveur-mcp-connecter-une-ia-a-un-systeme-existant">
+  <header class="article__header band-ox">
+    <div class="wrap article__header-inner">
+      <nav aria-label="Fil d'Ariane">
+        <ol class="breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/blog/?categorie=intelligence-artificielle">Intelligence artificielle</a></li>
+        </ol>
+      </nav>
+      <h1 class="article__title">Serveur MCP : connecter une IA à un système existant</h1>
+      <p class="article__excerpt">Le protocole MCP permet à un assistant IA d&#39;interroger vos outils et vos données sans réécrire votre système. Principe, exemple en Python et précautions de sécurité.</p>
+      <ul class="article__meta">
+        <li>Par <strong>Ardy Nganga</strong></li>
+        <li>Publié le <time datetime="2026-11-11">11 novembre 2026</time></li>
+        
+        <li>3 min de lecture</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="wrap article__layout">
+    <aside class="article__aside">
+      <nav class="toc" aria-labelledby="toc-title">
+      <h2 class="toc__title" id="toc-title"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#list"/></svg>Sommaire</h2>
+      <ol class="toc__list"><li class="toc__item toc__item--h2"><a href="#ce-que-mcp-apporte">Ce que MCP apporte</a></li><li class="toc__item toc__item--h2"><a href="#un-premier-serveur-en-python">Un premier serveur en Python</a></li><li class="toc__item toc__item--h3"><a href="#brancher-le-serveur-a-un-assistant">Brancher le serveur à un assistant</a></li><li class="toc__item toc__item--h2"><a href="#la-securite-n-est-pas-une-option">La sécurité n&#39;est pas une option</a></li><li class="toc__item toc__item--h2"><a href="#par-ou-commencer-dans-une-entreprise">Par où commencer dans une entreprise</a></li></ol>
+    </nav>
+      <a class="link-arrow article__back" href="/blog/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-left"/></svg>Retour au blog</a>
+    </aside>
+    <div class="article__main">
+      <img class="article__cover" src="/assets/images/blog/serveur-mcp-connecter-une-ia-a-un-systeme-existant.jpg" alt="Le sigle « MCP » et le symbole Nganga sur fond bordeaux" width="1200" height="630" fetchpriority="high" decoding="async">
+      <div class="prose" data-prose>
+
+<p>Un assistant IA sait rédiger, résumer et raisonner, mais il ne connaît ni vos commandes, ni vos stocks, ni vos dossiers clients. Pour qu'il devienne utile dans une entreprise, il doit pouvoir consulter vos systèmes, et parfois y agir. Le <strong>Model Context Protocol</strong> (MCP) est le standard ouvert qui décrit cette connexion.</p>
+
+<h2 id="ce-que-mcp-apporte">Ce que MCP apporte</h2>
+<p>Avant MCP, chaque intégration était écrite sur mesure pour un assistant donné. MCP joue le rôle d'une prise universelle : vous écrivez un serveur qui décrit ce que votre système sait faire, et tout assistant compatible peut s'y brancher.</p>
+<p>Un serveur MCP expose trois types d'éléments :</p>
+<ul>
+  <li>des <strong>outils</strong> : des fonctions que l'IA peut appeler, comme « rechercher une commande » ;</li>
+  <li>des <strong>ressources</strong> : des données consultables, comme un document ou une fiche ;</li>
+  <li>des <strong>modèles de requête</strong> : des consignes prêtes à l'emploi pour des tâches récurrentes.</li>
+</ul>
+<p>Point important : votre système existant ne change pas. Le serveur MCP est une couche mince posée devant votre API ou votre base de données.</p>
+
+<h2 id="un-premier-serveur-en-python">Un premier serveur en Python</h2>
+<p>Prenons une API de gestion de commandes déjà en service. L'objectif : permettre à un assistant de répondre à « Où en est la commande 1042 ? ».</p>
+<pre><code class="language-bash">pip install &quot;mcp[cli]&quot; httpx</code></pre>
+<pre data-title="serveur.py"><code class="language-python">import os
+
+import httpx
+from mcp.server.fastmcp import FastMCP
+
+mcp = FastMCP(&quot;gestion-commandes&quot;)
+
+API = os.environ[&quot;API_URL&quot;]
+JETON = os.environ[&quot;API_TOKEN&quot;]      # jeton en lecture seule, dédié à ce serveur
+
+
+@mcp.tool()
+async def rechercher_commande(numero: str) -&gt; dict:
+    &quot;&quot;&quot;Retourne le statut et le montant d&#39;une commande à partir de son numéro.&quot;&quot;&quot;
+    async with httpx.AsyncClient(timeout=10) as client:
+        reponse = await client.get(
+            f&quot;{API}/commandes/{numero}/&quot;,
+            headers={&quot;Authorization&quot;: f&quot;Bearer {JETON}&quot;},
+        )
+        reponse.raise_for_status()
+        commande = reponse.json()
+
+    return {
+        &quot;numero&quot;: commande[&quot;numero&quot;],
+        &quot;statut&quot;: commande[&quot;statut&quot;],
+        &quot;montant&quot;: commande[&quot;montant&quot;],
+    }
+
+
+if __name__ == &quot;__main__&quot;:
+    mcp.run()</code></pre>
+<p>Trois choses méritent l'attention :</p>
+<ul>
+  <li>La <strong>description</strong> de la fonction est lue par l'IA. C'est elle qui lui indique quand utiliser l'outil : rédigez-la comme une consigne claire.</li>
+  <li>Les <strong>types</strong> des paramètres deviennent le schéma que l'assistant doit respecter.</li>
+  <li>La fonction renvoie <strong>uniquement les champs utiles</strong>, pas la réponse brute de l'API.</li>
+</ul>
+
+<h3 id="brancher-le-serveur-a-un-assistant">Brancher le serveur à un assistant</h3>
+<p>Les clients compatibles se configurent en déclarant la commande qui lance le serveur.</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;gestion-commandes&quot;: {
+      &quot;command&quot;: &quot;python&quot;,
+      &quot;args&quot;: [&quot;serveur.py&quot;],
+      &quot;env&quot;: {
+        &quot;API_URL&quot;: &quot;https://api.exemple.test/v1&quot;,
+        &quot;API_TOKEN&quot;: &quot;jeton-en-lecture-seule&quot;
+      }
+    }
+  }
+}</code></pre>
+<p>En local, client et serveur échangent par l'entrée et la sortie standard. Pour un serveur partagé par une équipe, MCP prévoit aussi un transport HTTP.</p>
+
+<h2 id="la-securite-n-est-pas-une-option">La sécurité n'est pas une option</h2>
+<p>Donner des outils à une IA, c'est lui donner du pouvoir sur votre système. Quelques règles, tirées de la pratique du test d'intrusion :</p>
+<ul>
+  <li><strong>Moindre privilège.</strong> Le serveur utilise un compte dédié, limité au strict nécessaire. Commencez par la lecture seule.</li>
+  <li><strong>Validation des entrées.</strong> Ce que l'IA transmet à vos outils se traite comme une saisie d'utilisateur : jamais de SQL ni de commande assemblés à partir de ces valeurs.</li>
+  <li><strong>Confirmation humaine</strong> pour toute action qui modifie, supprime ou engage de l'argent.</li>
+  <li><strong>Méfiance envers le contenu.</strong> Un document ou un courriel lu par l'IA peut contenir des instructions cachées. Un outil ne doit pas pouvoir faire plus que ce que l'utilisateur a lui-même le droit de faire.</li>
+  <li><strong>Journalisation.</strong> Chaque appel d'outil est enregistré : qui, quoi, quand, avec quels paramètres.</li>
+</ul>
+
+<h2 id="par-ou-commencer-dans-une-entreprise">Par où commencer dans une entreprise</h2>
+<p>Le meilleur premier projet est modeste : un ou deux outils en lecture, sur une question que vos équipes posent tous les jours. Le suivi d'une commande, l'état d'un dossier, la recherche dans une procédure interne. Vous mesurez l'usage, vous ajustez les descriptions, puis vous ouvrez progressivement des actions d'écriture, toujours avec confirmation.</p>
+<p>L'intérêt de MCP est là : vous ajoutez de l'intelligence à ce qui existe déjà, sans refonte, et vous gardez la main sur ce que l'IA peut voir et faire.</p>
+
+      </div>
+      <footer class="article__footer">
+        <div><h2 class="article__footer-title">Sujets</h2><ul class="tag-list"><li><a class="tag" href="/blog/?tags=mcp">MCP</a></li><li><a class="tag" href="/blog/?tags=ia">IA</a></li><li><a class="tag" href="/blog/?tags=python">Python</a></li><li><a class="tag" href="/blog/?tags=automatisation">Automatisation</a></li></ul></div>
+        <div class="share" data-share data-share-title="Serveur MCP : connecter une IA à un système existant" data-share-text="Le protocole MCP permet à un assistant IA d&#39;interroger vos outils et vos données sans réécrire votre système. Principe, exemple en Python et précautions de sécurité.">
+    <h2 class="share__title">Partager cet article</h2>
+    <div class="share__actions">
+      <button type="button" class="btn btn--sm" data-share-native hidden><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#share"/></svg>Partager</button>
+      <button type="button" class="btn btn--ghost btn--sm" data-share-copy><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#copy"/></svg><span>Copier le lien</span></button>
+      <a class="btn btn--ghost btn--sm" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fardynganga.github.io%2Fblog%2Fserveur-mcp-connecter-une-ia-a-un-systeme-existant%2F" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn btn--ghost btn--sm" href="https://wa.me/?text=Serveur%20MCP%20%3A%20connecter%20une%20IA%20%C3%A0%20un%20syst%C3%A8me%20existant%20https%3A%2F%2Fardynganga.github.io%2Fblog%2Fserveur-mcp-connecter-une-ia-a-un-systeme-existant%2F" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="btn btn--ghost btn--sm" href="https://twitter.com/intent/tweet?text=Serveur%20MCP%20%3A%20connecter%20une%20IA%20%C3%A0%20un%20syst%C3%A8me%20existant&amp;url=https%3A%2F%2Fardynganga.github.io%2Fblog%2Fserveur-mcp-connecter-une-ia-a-un-systeme-existant%2F" target="_blank" rel="noopener noreferrer">X</a>
+    </div>
+    <p class="share__status visually-hidden" role="status" aria-live="polite"></p>
+  </div>
+      </footer>
+    </div>
+  </div>
+
+  <nav class="wrap article-nav" aria-label="Navigation entre les articles">
+    <a class="article-nav__link article-nav__link--older" href="/blog/flutter-hors-ligne-synchronisation/" rel="prev">
+      <span class="article-nav__label"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-left"/></svg>Article précédent</span>
+      <span class="article-nav__title">Flutter hors ligne : synchroniser sans perdre de données</span>
+    </a>
+    <span></span>
+  </nav>
+</article>
+<section class="section section--alt" aria-labelledby="similaires-title">
+  <div class="wrap">
+    <div class="section__head"><h2 id="similaires-title">Articles similaires</h2></div>
+    <div class="post-grid"><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/securiser-une-application-django.jpg" alt="Le mot « Django » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Cybersécurité</p>
+      <h3 class="post-card__title"><a href="/blog/securiser-une-application-django/">Comment sécuriser une application Django ?</a></h3>
+      <p class="post-card__excerpt">Django protège beaucoup de choses par défaut, mais pas tout. Voici les réglages et les réflexes qui font la différence entre une application en ligne et une application défendue.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>3 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/flutter-hors-ligne-synchronisation.jpg" alt="Le mot « Flutter » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Flutter</p>
+      <h3 class="post-card__title"><a href="/blog/flutter-hors-ligne-synchronisation/">Flutter hors ligne : synchroniser sans perdre de données</a></h3>
+      <p class="post-card__excerpt">Sur le terrain, le réseau va et vient. Une application mobile fiable enregistre d&#39;abord sur l&#39;appareil, puis synchronise sans créer de doublon. Voici le schéma que j&#39;utilise.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>3 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article><article class="post-card">
+    <img class="post-card__cover" src="/assets/images/blog/tester-la-securite-d-une-api-rest.jpg" alt="Le mot « API » et le symbole Nganga sur fond bordeaux" width="1200" height="630" loading="lazy" decoding="async">
+    <div class="post-card__body">
+      <p class="post-card__category">Pentest</p>
+      <h3 class="post-card__title"><a href="/blog/tester-la-securite-d-une-api-rest/">Tester la sécurité d&#39;une API REST : par où commencer ?</a></h3>
+      <p class="post-card__excerpt">Une API expose directement vos données et vos règles métier. Voici la démarche que je suis pour l&#39;évaluer, du périmètre autorisé jusqu&#39;au rapport.</p>
+      <p class="post-card__meta">
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-11">11 novembre 2026</time></span>
+      <span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#clock"/></svg>4 min de lecture</span>
+    </p>
+      <span class="link-arrow post-card__more" aria-hidden="true">Lire l'article <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow-right"/></svg></span>
+    </div>
+  </article></div>
+  </div>
+</section>
+  </main>
+  <!-- @include footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <a class="logo" href="/" aria-label="Nganga — retour à l'accueil">
+            <svg class="logo__mark" viewBox="0 0 135.8 94" aria-hidden="true" focusable="false"><path d="M44.4 0L82.7 0L92 17.2L73.4 47.9L63.4 33.1L59.6 39.3L61 43.2L42.6 73.4L39.6 71.8L30.4 85.7A16.4 16.4 0 0 1 2.4 68.7ZM105.4 7.8A16.4 16.4 0 0 1 133.4 25L91.6 94L53.4 94L44.5 79.2L63.4 47.8L72.4 61.7Z"/></svg>
+            <span class="logo__text"><span class="logo__name">Nganga</span><span class="logo__tag">Web — Mobile — Pentest</span></span>
+          </a>
+          <p class="site-footer__pitch">Ardy Nganga conçoit des applications Web, Mobile et Desktop, et teste leur sécurité avant qu'un attaquant ne le fasse.</p>
+        </div>
+        <nav aria-labelledby="pied-navigation">
+          <h2 class="site-footer__title" id="pied-navigation">Le site</h2>
+          <ul class="site-footer__list">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#realisations">Réalisations</a></li>
+            <li><a href="/pentest/">Tests d'intrusion</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#a-propos">À propos</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="site-footer__title">Contact</h2>
+          <ul class="site-footer__list">
+            <li><a href="mailto:ardyngangadev@gmail.com"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg>ardyngangadev@gmail.com</a></li>
+            <li><a href="https://wa.me/243840445627" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg>WhatsApp : +243 84 044 5627</a></li>
+            <li><a href="https://github.com/Ardynganga" target="_blank" rel="noopener noreferrer me"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#github"/></svg>GitHub</a></li>
+            
+            <li><a href="/blog/feed.xml"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#rss"/></svg>Flux RSS du blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span data-year>2026</span> Ardy Nganga · Kinshasa, RDC</p>
+        <a class="to-top" href="#contenu"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-up"/></svg>Haut de page</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="/assets/js/core/app.js"></script>
+  <!-- @end footer -->
+  <script type="module" src="/assets/js/blog/article.js"></script>
+</body>
+</html>
